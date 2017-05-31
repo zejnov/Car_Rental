@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\CarForRentDto.cs" />
     <Compile Include="Dtos\CarTypeDto.cs" />
     <Compile Include="Mappers\DtoToEntityMapper.cs" />
     <Compile Include="Mappers\EntityToDtoMapper.cs" />
