@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RentalCar.DataLayer\RentalCar.DataLayer.csproj">
+      <Project>{c44fea52-579e-4338-af6b-0bf10f1ad43e}</Project>
+      <Name>RentalCar.DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
