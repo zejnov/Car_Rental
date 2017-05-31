@@ -10,6 +10,11 @@ namespace RentalCar.BusinessLayer.Mappers
 {
     public class EntityToDtoMapper
     {
+        /// <summary>
+        /// Mapuje CarType z Entity do Dto
+        /// </summary>
+        /// <param name="carType">Model</param>
+        /// <returns>ModelDto</returns>
         public static CarTypeDto CarTypeEntityModelToDto(CarType carType)
         {
             if (carType == null)
@@ -24,6 +29,7 @@ namespace RentalCar.BusinessLayer.Mappers
                 PricePerDay = carType.PricePerDay,
             };
         }
-
+        ///
+        ///
     }
 }
