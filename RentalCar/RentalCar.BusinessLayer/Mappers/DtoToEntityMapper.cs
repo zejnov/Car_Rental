@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentalCar.BusinessLayer
+namespace RentalCar.BusinessLayer.Mappers
 {
-    class Program
+    public class DtoToEntityMapper
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
