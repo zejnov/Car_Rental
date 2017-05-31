@@ -54,6 +54,8 @@
     <Compile Include="Models\CarType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Basic\BasicRepository.cs" />
+    <Compile Include="Services\CarTypeRepository.cs" />
+    <Compile Include="Services\Interfaces\ICarTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
