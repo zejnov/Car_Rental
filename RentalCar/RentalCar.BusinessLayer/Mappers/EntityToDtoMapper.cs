@@ -24,6 +24,7 @@ namespace RentalCar.BusinessLayer.Mappers
 
             return new CarTypeDto
             {
+                Id = carType.Id,
                 Mark = carType.Mark,
                 Model = carType.Model,
                 PricePerDay = carType.PricePerDay,

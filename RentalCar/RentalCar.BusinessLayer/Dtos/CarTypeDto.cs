@@ -9,6 +9,11 @@ namespace RentalCar.BusinessLayer.Dtos
     public class CarTypeDto
     {
         /// <summary>
+        /// ID
+        /// </summary>
+        public int Id;
+
+        /// <summary>
         /// Marka pojazdu
         /// </summary>
         public string Mark;

@@ -9,6 +9,11 @@ namespace RentalCar.DataLayer.Models
     public class CarType
     {
         /// <summary>
+        /// ID
+        /// </summary>
+        public int Id { get; set; }
+        
+        /// <summary>
         /// Marka pojazdu
         /// </summary>
         public string Mark { get; set; }
