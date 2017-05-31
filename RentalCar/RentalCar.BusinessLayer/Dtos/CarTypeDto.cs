@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RentalCar.BusinessLayer.Dtos
-{
-    
+{    
     public class CarTypeDto
     {
         /// <summary>
@@ -15,18 +14,14 @@ namespace RentalCar.BusinessLayer.Dtos
         public string Mark;
 
         /// <summary>
-        /// 
+        /// Model pojazdu
         /// </summary>
         public string Model;
-        public int PricePerDay;
 
         /// <summary>
-        /// 
+        /// koszt za dzień wyporzyczenia
         /// </summary>
-        /// <param name="x"></param>
-        public void cos(int x)
-        {
-           var  Mark = new CarTypeDto();
-        }
+        public int PricePerDay;
+
     }
 }
