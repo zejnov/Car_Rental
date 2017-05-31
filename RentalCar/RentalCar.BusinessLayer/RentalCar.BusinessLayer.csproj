@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\CarTypeDto.cs" />
+    <Compile Include="Mappers\DtoToEntityMapper.cs" />
+    <Compile Include="Mappers\EntityToDtoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

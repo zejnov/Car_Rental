@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentalCar.DataLayer.Models
 {
-    class CarType
+    public class CarType
     {
         public string Mark { get; set; }
         public string Model { get; set; }
