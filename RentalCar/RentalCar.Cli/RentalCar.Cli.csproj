@@ -48,6 +48,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Commands\CommandAction.cs" />
     <Compile Include="Commands\CommandDispatcher.cs" />
+    <Compile Include="IoHelpers\ChooseFromList.cs" />
     <Compile Include="IoHelpers\Printer.cs" />
     <Compile Include="IoHelpers\UserInput.cs" />
     <Compile Include="Program.cs" />
