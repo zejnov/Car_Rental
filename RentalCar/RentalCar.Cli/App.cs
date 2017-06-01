@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RentalCar.BusinessLayer.Dtos;
 using RentalCar.Cli.Commands;
 using RentalCar.Cli.IoHelpers;
 
@@ -41,6 +42,7 @@ namespace RentalCar.Cli
         {
             //Help i Exit zawsze na dole
             _commandDispatcher.AddCommand("AddCarType", "Add new car type", AddCarTypeAction);
+           // _commandDispatcher.AddCommand(GetCar)
             _commandDispatcher.AddCommand("Help", "Show all available commands", HelpAction);
             _commandDispatcher.AddCommand("Exit", "Close program", ExitAction);
         }
@@ -71,7 +73,11 @@ namespace RentalCar.Cli
         /// <returns></returns>
         private bool AddCarTypeAction()
         {
-            throw new NotImplementedException();
+            var carTypeDto = new CarTypeDto();
+            carTypeDto = IoHelpers.UserInput.GetCarTypeDto();
+
+
+            return true;
         }
 
         /// <summary>
