@@ -27,5 +27,29 @@ namespace RentalCar.BusinessLayer.Dtos
         /// Typ samochodu
         /// </summary>
         public CarTypeDto TypeOfCar { get; set; }
+
+
+        /// <summary>
+        /// Sprawdza czy obiekty są równe
+        /// </summary>
+        /// <param name="obj">ModelDto</param>
+        /// <returns>IsEqual</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            var carForRentDto = obj as CarForRentDto;
+
+            bool isEqual = true;
+            isEqual &= Id == carForRentDto.Id;
+            isEqual &= RegistrationNumber == carForRentDto.RegistrationNumber;
+            isEqual &= IsRented == carForRentDto.IsRented;
+            isEqual &= TypeOfCar.Equals(carForRentDto.TypeOfCar);
+
+            return isEqual;
+        }
     }
 }

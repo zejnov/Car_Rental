@@ -27,5 +27,28 @@ namespace RentalCar.DataLayer.Models
         /// koszt za dzień wyporzyczenia
         /// </summary>
         public int PricePerDay { get; set; }
+
+        /// <summary>
+        /// Sprawdza czy obiekty są równe
+        /// </summary>
+        /// <param name="obj">Model</param>
+        /// <returns>IsEqual</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            var carType = obj as CarType;
+
+            bool isEqual = true;
+            isEqual &= Id == carType.Id;
+            isEqual &= Mark == carType.Mark;
+            isEqual &= Model == carType.Model;
+            isEqual &= PricePerDay == carType.PricePerDay;
+
+            return isEqual;
+        }
     }
 }
