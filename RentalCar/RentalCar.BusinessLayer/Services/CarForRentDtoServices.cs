@@ -14,12 +14,14 @@ namespace RentalCar.BusinessLayer.Services
         /// <summary>
         /// Dodaje nowy, unikatowy nowy CarForRent, zwraca false jeżeli taki już jest
         /// </summary>
-        /// <param name=""></param>
+        /// <param name="carForRentDto"></param>
         /// <returns></returns>
         public static bool Add(CarForRentDto carForRentDto)
         {
             if (Exist(carForRentDto))
                 return false;
+
+            carForRentDto.IsRented = false;
 
             return new CarForRentRepository().Add(DtoToEntityMapper.CarForRentEntityModelToDto(carForRentDto));
         }
@@ -46,5 +48,7 @@ namespace RentalCar.BusinessLayer.Services
                 .Select(EntityToDtoMapper.CarForRentEntityModelToDto)
                 .ToList();
         }
+
+        
     }
 }

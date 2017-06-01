@@ -63,6 +63,13 @@ namespace RentalCar.Cli.IoHelpers
         {
             var carForRentDto = new CarForRentDto();
             carForRentDto.RegistrationNumber = GetData<string>("Provide registration number: ");
+
+            while (carForRentDto.RegistrationNumber.Length != 7)
+            {
+                Console.WriteLine("You provide wrong number, try again");
+                carForRentDto.RegistrationNumber = GetData<string>("Provide registration number: ");
+            }
+
             var carTypeList = CarTypeDtoServices.GetAll();
                 carForRentDto.TypeOfCar = ChooseFromList.CarTypeDto(carTypeList);
             

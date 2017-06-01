@@ -77,19 +77,19 @@ namespace RentalCar.Cli
             Console.Clear();
 
             var carTypeDto = new CarTypeDto();
-            carTypeDto = IoHelpers.UserInput.GetCarTypeDto();
+            carTypeDto = UserInput.GetCarTypeDto();
             var success = CarTypeDtoServices.Add(carTypeDto);
 
             if (success)
             {
-                Console.WriteLine("Car type added successfull");
-                return true;
+                Console.WriteLine("Car type added successfully");
             }
             else
             {
                 Console.WriteLine("Given type of car already exists in the database");
-                return true;
             }
+            return true;
+
         }
 
         /// <summary>
@@ -101,9 +101,16 @@ namespace RentalCar.Cli
             Console.Clear();
             var carForRentDto = new CarForRentDto();
             carForRentDto = UserInput.GetCarForRentDto();
-           // carForRentDto = IoHelpers.UserInput.
+            var success = CarForRentDtoServices.Add(carForRentDto);
 
-
+            if (success)
+            {
+                Console.WriteLine("Car for rent added successfully");
+            }
+            else
+            {
+                Console.WriteLine("Given car already exists in the database");
+            }
             return true;
         }
 
