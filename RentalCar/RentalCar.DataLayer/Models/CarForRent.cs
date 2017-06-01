@@ -28,5 +28,28 @@ namespace RentalCar.DataLayer.Models
         /// </summary>
         public CarType TypeOfCar { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj">ModelDto</param>
+        /// <returns>IsEqual</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            var carForRent = obj as CarForRent;
+
+            bool isEqual=true;
+            isEqual &= Id == carForRent.Id;
+            isEqual &= RegistrationNumber == carForRent.RegistrationNumber;
+            isEqual &= IsRented == carForRent.IsRented;
+            isEqual &= TypeOfCar.Equals(carForRent.TypeOfCar);
+            
+            return isEqual;
+        }
+
     }
 }

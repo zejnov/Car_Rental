@@ -28,5 +28,28 @@ namespace RentalCar.BusinessLayer.Dtos
         /// </summary>
         public int PricePerDay { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj">Model</param>
+        /// <returns>IsEqual</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            var carTypeDto = obj as CarTypeDto;
+
+            bool isEqual = true;
+            isEqual &= Id == carTypeDto.Id;
+            isEqual &= Mark == carTypeDto.Mark;
+            isEqual &= Model == carTypeDto.Model;
+            isEqual &= PricePerDay == carTypeDto.PricePerDay;
+
+            return isEqual;
+        }
+
     }
 }
