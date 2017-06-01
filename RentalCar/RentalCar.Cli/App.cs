@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentalCar.BusinessLayer.Dtos;
+using RentalCar.BusinessLayer.Services;
 using RentalCar.Cli.Commands;
 using RentalCar.Cli.IoHelpers;
 
@@ -73,11 +74,22 @@ namespace RentalCar.Cli
         /// <returns>Success or no</returns>
         private bool AddCarTypeAction()
         {
+            Console.Clear();
+
             var carTypeDto = new CarTypeDto();
             carTypeDto = IoHelpers.UserInput.GetCarTypeDto();
+            var success = CarTypeDtoServices.Add(carTypeDto);
 
-
-            return true;
+            if (success)
+            {
+                Console.WriteLine("Car type added successfull");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Given type of car already exists in the database");
+                return true;
+            }
         }
 
         /// <summary>
