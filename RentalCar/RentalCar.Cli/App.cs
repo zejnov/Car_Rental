@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RentalCar.BusinessLayer.Dtos;
 using RentalCar.Cli.Commands;
+using RentalCar.Cli.IoHelpers;
 
 namespace RentalCar.Cli
 {
@@ -99,8 +100,7 @@ namespace RentalCar.Cli
 
             foreach (var commandActions in _commandDispatcher.GetValidCommandActions())
             {
-                //TODO Wyświetl wszystkie komendy!
-                //Printer.PrintObjectData(commandActions);
+                Printer.PrintObjectData(commandActions);
             }
 
             return true;
