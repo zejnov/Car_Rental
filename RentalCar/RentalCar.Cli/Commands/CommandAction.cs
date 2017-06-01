@@ -9,7 +9,7 @@ namespace RentalCar.Cli.Commands
     /// <summary>
     /// Klasa przetrzymująca pojedyńczą komendę
     /// </summary>
-    class CommandAction
+    public class CommandAction
     {
         /// <summary>
         /// Tekst, który wywołuje komendę

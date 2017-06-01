@@ -11,7 +11,13 @@ namespace RentalCar.Cli.IoHelpers
     /// </summary>
     public static class UserInput
     {
-        public static T GetData<T>(string message)
+        /// <summary>
+        /// Pobiera daną wartość z opisem podanym 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static T GetData<T>(string message) 
         {
             while (true)
             {
