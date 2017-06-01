@@ -20,9 +20,14 @@ namespace RentalCar.DataLayer.DbContexts
         public RentalCarDbContext() : base(GetConnectionString()) { }
 
         /// <summary>
-        /// Zwraca tabelę CarType
+        /// Tabelę CarType
         /// </summary>
         public DbSet<CarType> CarTypesDbSet {get; set; }
+
+        /// <summary>
+        /// Tabela z Car for Rent
+        /// </summary>
+        public DbSet<CarForRent> CarForRentsDbSet { get; set; }
 
         /// <summary>
         /// Pobiera conection stringa

@@ -15,6 +15,10 @@ namespace RentalCar.Cli.IoHelpers
             Console.WriteLine($"{command.Command} - {command.Description}");
         }
 
+        public static void PrintOrderedList(CarTypeDto courseMember, int ordinal)
+        {
+            Console.WriteLine($"{ordinal}. {courseMember.Mark} {courseMember.Model} {courseMember.PricePerDay}zl/day");
+        }
         /// <summary>
         /// Drukuje liste CarType zgromadzoną w liście
         /// </summary>
