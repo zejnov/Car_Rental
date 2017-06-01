@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentalCar.BusinessLayer.Dtos;
+using RentalCar.BusinessLayer.Services;
 
 namespace RentalCar.Cli.IoHelpers
 {
@@ -52,6 +53,20 @@ namespace RentalCar.Cli.IoHelpers
             carTypeDto.PricePerDay = GetData<int>("Provide price per day: ");
 
             return carTypeDto;
+        }
+
+        /// <summary>
+        /// Pobieranie danych do konkretnego pojazdu
+        /// </summary>
+        /// <returns></returns>
+        public static CarForRentDto GetCarForRentDto()
+        {
+            var carForRentDto = new CarForRentDto();
+            carForRentDto.RegistrationNumber = GetData<string>("Provide registration number: ");
+            var carTypeList = CarTypeDtoServices.GetAll();
+                carForRentDto.TypeOfCar = ChooseFromList.CarTypeDto(carTypeList);
+            
+            return carForRentDto;
         }
     }
 }

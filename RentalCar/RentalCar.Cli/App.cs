@@ -100,7 +100,7 @@ namespace RentalCar.Cli
         {
             Console.Clear();
             var carForRentDto = new CarForRentDto();
-            //todo getcarforrent
+            carForRentDto = UserInput.GetCarForRentDto();
            // carForRentDto = IoHelpers.UserInput.
 
 
