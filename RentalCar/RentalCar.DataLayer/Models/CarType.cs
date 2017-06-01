@@ -29,7 +29,7 @@ namespace RentalCar.DataLayer.Models
         public int PricePerDay { get; set; }
 
         /// <summary>
-        /// 
+        /// Sprawdza czy obiekty są równe
         /// </summary>
         /// <param name="obj">Model</param>
         /// <returns>IsEqual</returns>
