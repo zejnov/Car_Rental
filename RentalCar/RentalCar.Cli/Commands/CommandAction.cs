@@ -6,13 +6,32 @@ using System.Threading.Tasks;
 
 namespace RentalCar.Cli.Commands
 {
+    /// <summary>
+    /// Klasa przetrzymująca pojedyńczą komendę
+    /// </summary>
     class CommandAction
     {
+        /// <summary>
+        /// Tekst, który wywołuje komendę
+        /// </summary>
         public string Command { get; private set; }
+
+        /// <summary>
+        /// Opis komendy
+        /// </summary>
         public string Description { get; private set; }
 
+        /// <summary>
+        /// Akcja która jest wywyoływana
+        /// </summary>
         private Func<bool> _action;
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="description"></param>
+        /// <param name="action"></param>
         public CommandAction (string command, string description, Func<bool> action)
         {
             Command = command;
@@ -20,6 +39,10 @@ namespace RentalCar.Cli.Commands
             _action = action;
         }
 
+        /// <summary>
+        /// Egzekucja
+        /// </summary>
+        /// <returns></returns>
         public bool ExecuteCommandAction()
         {
             return _action();
