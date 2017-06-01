@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RentalCar.BusinessLayer.Dtos;
 using RentalCar.Cli.Commands;
 
 namespace RentalCar.Cli.IoHelpers
@@ -12,6 +13,19 @@ namespace RentalCar.Cli.IoHelpers
         public static void PrintObjectData(CommandAction command)
         {
             Console.WriteLine($"{command.Command} - {command.Description}");
+        }
+
+        /// <summary>
+        /// Drukuje liste CarType zgromadzoną w liście
+        /// </summary>
+        /// <param name="carTypeList"></param>
+        public static void PrintCarTypeList(List<CarTypeDto> carTypeList)
+        {
+            foreach (var carType in carTypeList)
+            {
+                Console.WriteLine($"{carType.Id}. {carType.Mark} {carType.Model} " +
+                                  $"costs {carType.PricePerDay} per day");
+            }
         }
     }
 }

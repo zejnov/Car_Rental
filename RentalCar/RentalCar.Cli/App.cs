@@ -43,7 +43,7 @@ namespace RentalCar.Cli
         {
             //Help i Exit zawsze na dole
             _commandDispatcher.AddCommand("AddCarType", "Add new car type", AddCarTypeAction);
-           // _commandDispatcher.AddCommand(GetCar)
+            _commandDispatcher.AddCommand("AddCarForRent", "Add new car for rent", AddCarForRentAction);
             _commandDispatcher.AddCommand("Help", "Show all available commands", HelpAction);
             _commandDispatcher.AddCommand("Exit", "Close program", ExitAction);
         }
@@ -90,6 +90,21 @@ namespace RentalCar.Cli
                 Console.WriteLine("Given type of car already exists in the database");
                 return true;
             }
+        }
+
+        /// <summary>
+        /// Dodanie auta do wypożyczalni (z rejestracją itd...)
+        /// </summary>
+        /// <returns></returns>
+        private bool AddCarForRentAction()
+        {
+            Console.Clear();
+            var carForRentDto = new CarForRentDto();
+            //todo getcarforrent
+           // carForRentDto = IoHelpers.UserInput.
+
+
+            return true;
         }
 
         /// <summary>
