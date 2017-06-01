@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RentalCar.Cli.Commands
 {
-    class CommandDispatcher
+    public class CommandDispatcher
     {
         /// <summary>
         /// Lista dostępnych komend
