@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentalCar.BusinessLayer.Dtos;
+using RentalCar.BusinessLayer.Services;
 using RentalCar.Cli.Commands;
 using RentalCar.Cli.IoHelpers;
 
@@ -42,7 +43,7 @@ namespace RentalCar.Cli
         {
             //Help i Exit zawsze na dole
             _commandDispatcher.AddCommand("AddCarType", "Add new car type", AddCarTypeAction);
-           // _commandDispatcher.AddCommand(GetCar)
+            _commandDispatcher.AddCommand("AddCarForRent", "Add new car for rent", AddCarForRentAction);
             _commandDispatcher.AddCommand("Help", "Show all available commands", HelpAction);
             _commandDispatcher.AddCommand("Exit", "Close program", ExitAction);
         }
@@ -70,13 +71,46 @@ namespace RentalCar.Cli
         /// <summary>
         /// Wszystkie operacje związane z dodaniem auta 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Success or no</returns>
         private bool AddCarTypeAction()
         {
+            Console.Clear();
+
             var carTypeDto = new CarTypeDto();
-            carTypeDto = IoHelpers.UserInput.GetCarTypeDto();
+            carTypeDto = UserInput.GetCarTypeDto();
+            var success = CarTypeDtoServices.Add(carTypeDto);
 
+            if (success)
+            {
+                Console.WriteLine("Car type added successfully");
+            }
+            else
+            {
+                Console.WriteLine("Given type of car already exists in the database");
+            }
+            return true;
 
+        }
+
+        /// <summary>
+        /// Dodanie auta do wypożyczalni (z rejestracją itd...)
+        /// </summary>
+        /// <returns></returns>
+        private bool AddCarForRentAction()
+        {
+            Console.Clear();
+            var carForRentDto = new CarForRentDto();
+            carForRentDto = UserInput.GetCarForRentDto();
+            var success = CarForRentDtoServices.Add(carForRentDto);
+
+            if (success)
+            {
+                Console.WriteLine("Car for rent added successfully");
+            }
+            else
+            {
+                Console.WriteLine("Given car already exists in the database");
+            }
             return true;
         }
 

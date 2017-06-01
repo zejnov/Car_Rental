@@ -19,5 +19,17 @@ namespace RentalCar.Cli.IoHelpers
         {
             Console.WriteLine($"{ordinal}. {courseMember.Mark} {courseMember.Model} {courseMember.PricePerDay}zl/day");
         }
+        /// <summary>
+        /// Drukuje liste CarType zgromadzoną w liście
+        /// </summary>
+        /// <param name="carTypeList"></param>
+        public static void PrintCarTypeList(List<CarTypeDto> carTypeList)
+        {
+            foreach (var carType in carTypeList)
+            {
+                Console.WriteLine($"{carType.Id}. {carType.Mark} {carType.Model} " +
+                                  $"costs {carType.PricePerDay} per day");
+            }
+        }
     }
 }
