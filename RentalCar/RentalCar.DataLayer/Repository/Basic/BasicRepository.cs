@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RentalCar.DataLayer.DbContexts;
 
-namespace RentalCar.DataLayer.Services.Basic
+namespace RentalCar.DataLayer.Repository.Basic
 {
     /// <summary>
     /// Podstawowe repozytorium po którym dziedziczą wszystkie. 
@@ -33,6 +33,13 @@ namespace RentalCar.DataLayer.Services.Basic
         /// </summary>
         /// <returns></returns>
         public abstract List<T> GetAll();
+
+        /// <summary>
+        /// Sprawdzenie czy dany obiekt istnieje w bazie
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public abstract bool Exist(T model);
 
         /// <summary>
         /// Odpalanie kwerendy

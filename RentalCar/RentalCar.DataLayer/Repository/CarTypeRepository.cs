@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentalCar.DataLayer.Models;
-using RentalCar.DataLayer.Services.Basic;
-using RentalCar.DataLayer.Services.Interfaces;
+using RentalCar.DataLayer.Repository.Basic;
+using RentalCar.DataLayer.Repository.Interfaces;
 
-namespace RentalCar.DataLayer.Services
+namespace RentalCar.DataLayer.Repository
 {
     /// <summary>
     /// Klasa obługująca model CarType w relacji z bazą
@@ -45,6 +45,22 @@ namespace RentalCar.DataLayer.Services
         public override List<CarType> GetAll()
         {
             return ExecuteQuery(dbContext => dbContext.CarTypesDbSet.ToList());
+        }
+
+        /// <summary>
+        /// Sprawdzanie czy CarType istnieje w bazie danych
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public override bool Exist(CarType model)
+        {
+            return ExecuteQuery(dbContext =>
+            {
+                var data = dbContext.CarTypesDbSet
+                    .FirstOrDefault(p => p.Mark == model.Mark && p.Model == model.Model);
+
+                return data != null;
+            });
         }
     }
 }
