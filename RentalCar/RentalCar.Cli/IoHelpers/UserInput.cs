@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RentalCar.BusinessLayer.Dtos;
 
 namespace RentalCar.Cli.IoHelpers
 {
@@ -11,6 +12,12 @@ namespace RentalCar.Cli.IoHelpers
     /// </summary>
     public static class UserInput
     {
+        /// <summary>
+        /// Generyczne pobieranie
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public static T GetData<T>(string message)
         {
             while (true)
@@ -31,6 +38,20 @@ namespace RentalCar.Cli.IoHelpers
                     Console.WriteLine("ERROR! Something went wrong, try again");
                 }
             }
+        }
+
+        /// <summary>
+        /// Pobieranie od urzytkownika CarTypeDto
+        /// </summary>
+        /// <returns>CarTypeDto</returns>
+        public static CarTypeDto GetCarTypeDto()
+        {
+            var carTypeDto = new CarTypeDto();
+            carTypeDto.Mark = GetData<string>("Provide car mark: ");
+            carTypeDto.Model = GetData<string>("Provide car model: ");
+            carTypeDto.PricePerDay = GetData<int>("Provide price per day: ");
+
+            return carTypeDto;
         }
     }
 }
