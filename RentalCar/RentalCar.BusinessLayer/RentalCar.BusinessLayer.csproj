@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Dtos\CarForRentDto.cs" />
     <Compile Include="Dtos\CarTypeDto.cs" />
+    <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Mappers\DtoToEntityMapper.cs" />
     <Compile Include="Mappers\EntityToDtoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -70,7 +70,7 @@ namespace RentalCar.Cli
         /// <summary>
         /// Wszystkie operacje związane z dodaniem auta 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Success or no</returns>
         private bool AddCarTypeAction()
         {
             var carTypeDto = new CarTypeDto();
