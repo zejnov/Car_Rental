@@ -13,7 +13,7 @@ namespace RentalCar.Cli.IoHelpers
     public static class ChooseFromList
     {
         /// <summary>
-        /// Pyta użytkownika po wybranie konkretnego modelu
+        /// Pyta użytkownika o wybranie konkretnego modelu
         /// </summary>
         /// <param name="carTypes"></param>
         /// <returns></returns>
@@ -41,6 +41,37 @@ namespace RentalCar.Cli.IoHelpers
             }
 
             return carTypes[answer - 1];
+        }
+
+        /// <summary>
+        /// Pyta użytkownika o wybranie konkretnego klienta
+        /// </summary>
+        /// <param name="customerDto"></param>
+        /// <returns></returns>
+        public static CustomerDto CustomerDto(List<CustomerDto> customerDto)
+        {
+            int answer = 1;
+            bool isAnswerCorrect = false;
+
+            int i = 1;
+            foreach (var customer in customerDto)
+            {
+                Printer.PrintOrderedList(customer, i++);
+            }
+
+            Console.WriteLine();
+            Console.Write("Please, chose number:");
+
+            while (!isAnswerCorrect)
+            {
+                answer = Int32.Parse(Console.ReadLine());
+                isAnswerCorrect = answer > 0 && answer <= customerDto.Count;
+
+                if (!isAnswerCorrect)
+                    Console.Write("Incorrect answer. Try again: ");
+            }
+
+            return customerDto[answer - 1];
         }
     }
 }

@@ -10,15 +10,35 @@ namespace RentalCar.Cli.IoHelpers
 {
     public static class Printer
     {
+        /// <summary>
+        /// Wyświetla info o commandAction
+        /// </summary>
+        /// <param name="command"></param>
         public static void PrintObjectData(CommandAction command)
         {
             Console.WriteLine($"{command.Command} - {command.Description}");
         }
 
-        public static void PrintOrderedList(CarTypeDto courseMember, int ordinal)
+        /// <summary>
+        /// Wyświetla element listy z danymi CarType
+        /// </summary>
+        /// <param name="carType"></param>
+        /// <param name="ordinal"></param>
+        public static void PrintOrderedList(CarTypeDto carType, int ordinal)
         {
-            Console.WriteLine($"{ordinal}. {courseMember.Mark} {courseMember.Model} {courseMember.PricePerDay}zl/day");
+            Console.WriteLine($"{ordinal}. {carType.Mark} {carType.Model} {carType.PricePerDay}zl/day");
         }
+
+        /// <summary>
+        /// Wyświetla element listy z danymi klienta
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <param name="ordinal"></param>
+        public static void PrintOrderedList(CustomerDto customer, int ordinal)
+        {
+            Console.WriteLine($"{ordinal}. {customer.Name} {customer.Surname} {customer.Pesel}");
+        }
+
         /// <summary>
         /// Drukuje liste CarType zgromadzoną w liście
         /// </summary>
