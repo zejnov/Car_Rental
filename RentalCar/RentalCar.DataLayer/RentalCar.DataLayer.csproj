@@ -64,6 +64,7 @@
     <Compile Include="Repository\CarRentedByCustomerRepository.cs" />
     <Compile Include="Repository\CarTypeRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\Interfaces\ICarRentedByCustomer.cs" />
     <Compile Include="Repository\Interfaces\ICustomerRepository.cs" />
     <Compile Include="Repository\Interfaces\ICarForRentRepository.cs" />
     <Compile Include="Repository\Interfaces\ICarTypeRepository.cs" />

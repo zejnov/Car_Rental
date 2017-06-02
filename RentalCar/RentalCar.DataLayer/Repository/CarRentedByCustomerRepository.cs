@@ -11,7 +11,7 @@ using RentalCar.DataLayer.Repository.Interfaces;
 namespace RentalCar.DataLayer.Repository
 {
     public class CarRentedByCustomerRepository : BasicRepository<CarsRentedByCustomers>, ICarRentedByCustomer
-    { }
+    { 
         /// <summary>
         /// Dodawanie modelu CarType do bazy danych
         /// </summary>
