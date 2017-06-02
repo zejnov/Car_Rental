@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CarForRentDtoServices.cs" />
     <Compile Include="Services\CarTypeDtoServices.cs" />
+    <Compile Include="Services\CourseDtoServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

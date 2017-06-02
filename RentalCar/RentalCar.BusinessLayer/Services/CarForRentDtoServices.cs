@@ -9,6 +9,9 @@ using RentalCar.DataLayer.Repository;
 
 namespace RentalCar.BusinessLayer.Services
 {
+    /// <summary>
+    /// Obługa CarForRentDto
+    /// </summary>
     public class CarForRentDtoServices
     {
         /// <summary>
@@ -47,8 +50,6 @@ namespace RentalCar.BusinessLayer.Services
                 .GetAll()
                 .Select(EntityToDtoMapper.CarForRentEntityModelToDto)
                 .ToList();
-        }
-
-        
+        }        
     }
 }

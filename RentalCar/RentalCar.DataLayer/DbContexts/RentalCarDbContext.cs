@@ -30,6 +30,11 @@ namespace RentalCar.DataLayer.DbContexts
         public DbSet<CarForRent> CarForRentsDbSet { get; set; }
 
         /// <summary>
+        /// Tabela z Customers
+        /// </summary>
+        public DbSet<Customer> CustomersDbSet { get; set; }
+
+        /// <summary>
         /// Pobiera conection stringa
         /// </summary>
         /// <returns>Obiekt typu string, który jest connectionString</returns>
