@@ -31,7 +31,7 @@ namespace RentalCar.DataLayer.Models
         /// <summary>
         /// Lista "wypożyczeń"
         /// </summary>
-        public List<CarsRentedByCustomers> CarsRentedByCustomersList { get; set; }
+        public List<CarsRentedByCustomers> CarsRentedByCustomersList { get; set; } = new List<CarsRentedByCustomers>();
 
         /// <summary>
         /// Sprawdza czy obiekty są równe
