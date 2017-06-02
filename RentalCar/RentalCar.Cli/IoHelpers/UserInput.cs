@@ -87,8 +87,7 @@ namespace RentalCar.Cli.IoHelpers
             customerDto.Surname = GetData<string>("Provide customer surname: ");
             customerDto.Pesel = GetData<long>("Provide customer PESEL");
 
-            //890 501 021 23 = 11
-            while (customerDto.Pesel.ToString().Length != 1)
+            while (CustomerDtoServices.CheckPesel(customerDto.Pesel))
             {
                 Console.WriteLine("You provide wrong PESEL, try again");
                 customerDto.Pesel = GetData<long>("Provide registration number: ");
