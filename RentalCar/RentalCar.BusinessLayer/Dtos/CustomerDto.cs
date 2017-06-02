@@ -29,6 +29,12 @@ namespace RentalCar.BusinessLayer.Dtos
         public long Pesel { get; set; }
 
         /// <summary>
+        /// Lista "wypożyczeń"
+        /// </summary>
+        public List<CarsRentedByCustomersDto> CarsRentedByCustomersList { get; set; }
+
+
+        /// <summary>
         /// Sprawdza czy klienci są równi
         /// </summary>
         /// <param name="obj">Model</param>

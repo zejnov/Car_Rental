@@ -17,7 +17,7 @@ namespace RentalCar.DataLayer.Models
         /// <summary>
         /// Samochód do wyporzeczenia
         /// </summary>
-        public CarForRent CarForRent { get; set; }
+        public CarForRent CarForRental { get; set; }
 
         /// <summary>
         /// Klient Wyporzyczający
@@ -40,7 +40,7 @@ namespace RentalCar.DataLayer.Models
 
             bool isEqual = true;
             isEqual &= Id == carsRentedByCustomers.Id;
-            isEqual &= CarForRent.Equals(carsRentedByCustomers.CarForRent);
+            isEqual &= CarForRental.Equals(carsRentedByCustomers.CarForRental);
             isEqual &= Customer.Equals(carsRentedByCustomers.Customer);
             isEqual &= RentalDateTime == carsRentedByCustomers.RentalDateTime;
 

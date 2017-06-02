@@ -12,7 +12,6 @@ namespace RentalCar.DataLayer.Models
         /// <summary>
         /// ID klienta
         /// </summary>
-        [Key] //takie cuś wyczytałem
         public int Id { get; set; }
 
         /// <summary>
@@ -28,8 +27,12 @@ namespace RentalCar.DataLayer.Models
         /// <summary>
         /// PESEL klienta (niepowtarzalny)
         /// </summary>
-        [Key] //może przy wprowadzaniu zrobić (CheckIfExist)
         public long Pesel { get; set; }
+
+        /// <summary>
+        /// Lista "wypożyczeń"
+        /// </summary>
+        public List<CarsRentedByCustomers> CarsRentedByCustomersList { get; set; }
 
         /// <summary>
         /// Sprawdza czy klienci są równi

@@ -17,7 +17,7 @@ namespace RentalCar.BusinessLayer.Dtos
         /// <summary>
         /// Samochód do wyporzeczenia
         /// </summary>
-        public CarForRentDto CarForRent { get; set; }
+        public CarForRentDto CarForRental { get; set; }
 
         /// <summary>
         /// Klient Wyporzyczający
@@ -40,7 +40,7 @@ namespace RentalCar.BusinessLayer.Dtos
 
             bool isEqual = true;
             isEqual &= Id == carsRentedByCustomersDto.Id;
-            isEqual &= CarForRent.Equals(carsRentedByCustomersDto.CarForRent);
+            isEqual &= CarForRental.Equals(carsRentedByCustomersDto.CarForRental);
             isEqual &= Customer.Equals(carsRentedByCustomersDto.Customer);
             isEqual &= RentalDateTime == carsRentedByCustomersDto.RentalDateTime;
 
