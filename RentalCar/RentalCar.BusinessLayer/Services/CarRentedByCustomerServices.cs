@@ -18,8 +18,10 @@ namespace RentalCar.BusinessLayer.Services
         /// <returns></returns>
         public static bool Add(CarsRentedByCustomersDto carRentedByCustomersDto)
         {
-            if (Exist(carRentedByCustomersDto))
-                return false;
+            carRentedByCustomersDto.RentalDateTime = DateTime.Now;
+
+            //if (Exist(carRentedByCustomersDto))
+             //   return false;
 
             return new CarRentedByCustomerRepository()
                 .Add(DtoToEntityMapper.CarsRentedByCustomersDtoToEntity(carRentedByCustomersDto));

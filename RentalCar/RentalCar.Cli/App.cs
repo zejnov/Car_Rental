@@ -151,18 +151,30 @@ namespace RentalCar.Cli
 
             var rentingCar = new CarsRentedByCustomersDto();
 
-            rentingCar.Customer = ChooseFromList
+            var choosenCustomer = ChooseFromList
                 .CustomerDto(CustomerDtoServices.GetAll());
 
-            rentingCar.CarForRental = ChooseFromList
+            if (choosenCustomer == null)
+            {
+                Console.WriteLine("There is no customers");
+                return true;
+            }
+
+            rentingCar.Customer = choosenCustomer;
+
+            var choosenCar = ChooseFromList
                 .CarAvalibleForRent(CarForRentDtoServices.GetAll());
 
-            rentingCar.RentalDateTime = DateTime.Now;
+            if (choosenCar == null)
+            {
+                Console.WriteLine("There is no car to rent!");
+                return true;
+            }
 
-            var success = true;
-            //success &= 
-            /*var success = serviss
+            rentingCar.CarForRental = choosenCar;
 
+            var success = CarRentedByCustomerServices.Add(rentingCar);
+            
             if (success)
             {
                 Console.WriteLine("Renting operation ended successfully");
@@ -171,8 +183,6 @@ namespace RentalCar.Cli
             {
                 Console.WriteLine("Given customer already exists in the database");
             }
-            */
-
             return true;
         }
 

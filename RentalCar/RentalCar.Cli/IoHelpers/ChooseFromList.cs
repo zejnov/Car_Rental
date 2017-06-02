@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RentalCar.BusinessLayer.Dtos;
+using RentalCar.Cli.Exceptions;
 
 namespace RentalCar.Cli.IoHelpers
 {
@@ -53,6 +54,11 @@ namespace RentalCar.Cli.IoHelpers
             int answer = 1;
             bool isAnswerCorrect = false;
 
+            if (customerDto.Count == 0)
+            {
+                return null;
+            }
+
             int i = 1;
             foreach (var customer in customerDto)
             {
@@ -82,13 +88,19 @@ namespace RentalCar.Cli.IoHelpers
             int i = 1;
 
             carForRentDto = carForRentDto.FindAll(p => !p.IsRented);
+
+            if (carForRentDto.Count == 0)
+            {
+                return null;
+            }
+
             foreach (var car in carForRentDto)
             {
                 Printer.PrintOrderedList(car, i++);
             }
 
             Console.WriteLine();
-            Console.Write("Please, chose number:");
+            Console.Write("Please, choose number:");
 
             while (!isAnswerCorrect)
             {

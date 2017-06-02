@@ -24,6 +24,8 @@ namespace RentalCar.DataLayer.Repository
                 dbContext.CustomersDbSet.Attach(model.Customer);
                 dbContext.CarForRentsDbSet.Attach(model.CarForRental);
 
+                model.CarForRental.IsRented = true;
+
                 dbContext.CarsRentedByCustomersesDbSet.Add(model);
 
                 model.Customer.CarsRentedByCustomersList.Add(model);

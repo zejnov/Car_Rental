@@ -47,7 +47,7 @@ namespace RentalCar.Cli.IoHelpers
         public static void PrintOrderedList(CarForRentDto car, int ordinal)
         {
             Console.WriteLine(
-                $"{ordinal}. {car.TypeOfCar.Mark} {car.TypeOfCar.Model} {car.PricePerDay}zl/day {car.RegistrationNumber}");
+                $"{ordinal}. {car.TypeOfCar.Mark} {car.TypeOfCar.Model} {car.TypeOfCar.PricePerDay}zl/day {car.RegistrationNumber}");
         }
 
         /// <summary>
