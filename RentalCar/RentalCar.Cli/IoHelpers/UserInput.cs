@@ -25,7 +25,7 @@ namespace RentalCar.Cli.IoHelpers
             {
                 try
                 {
-                    Console.WriteLine(message);
+                    Console.Write(message + " ");
                     return (T) Convert.ChangeType(Console.ReadLine(), typeof(T));
                 }
                 catch (ArgumentNullException)
@@ -87,7 +87,7 @@ namespace RentalCar.Cli.IoHelpers
             customerDto.Surname = GetData<string>("Provide customer surname: ");
             customerDto.Pesel = GetData<long>("Provide customer PESEL");
 
-            while (CustomerDtoServices.CheckPesel(customerDto.Pesel))
+            while (!CustomerDtoServices.CheckPesel(customerDto.Pesel))
             {
                 Console.WriteLine("You provide wrong PESEL, try again");
                 customerDto.Pesel = GetData<long>("Provide registration number: ");
