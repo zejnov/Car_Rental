@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="DbContexts\RentalCarDbContext.cs" />
     <Compile Include="Models\CarForRent.cs" />
+    <Compile Include="Models\CarsRentedByCustomers.cs" />
     <Compile Include="Models\CarType.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

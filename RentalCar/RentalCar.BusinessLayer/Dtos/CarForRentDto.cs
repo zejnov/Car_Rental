@@ -28,6 +28,11 @@ namespace RentalCar.BusinessLayer.Dtos
         /// </summary>
         public CarTypeDto TypeOfCar { get; set; }
 
+        /// <summary>
+        /// Lista "wypożyczeń"
+        /// </summary>
+        public List<CarsRentedByCustomersDto> CarsRentedByCustomersList { get; set; }
+
 
         /// <summary>
         /// Sprawdza czy obiekty są równe

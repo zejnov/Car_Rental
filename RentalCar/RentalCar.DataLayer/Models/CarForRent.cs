@@ -29,9 +29,14 @@ namespace RentalCar.DataLayer.Models
         public CarType TypeOfCar { get; set; }
 
         /// <summary>
+        /// Lista "wypożyczeń"
+        /// </summary>
+        public List<CarsRentedByCustomers> CarsRentedByCustomersList { get; set; }
+
+        /// <summary>
         /// Sprawdza czy obiekty są równe
         /// </summary>
-        /// <param name="obj">ModelDto</param>
+        /// <param name="obj">Model</param>
         /// <returns>IsEqual</returns>
         public override bool Equals(object obj)
         {

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\CarForRentDto.cs" />
+    <Compile Include="Dtos\CarsRentedByCustomersDto.cs" />
     <Compile Include="Dtos\CarTypeDto.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Mappers\DtoToEntityMapper.cs" />
