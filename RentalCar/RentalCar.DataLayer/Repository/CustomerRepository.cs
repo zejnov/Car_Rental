@@ -11,7 +11,7 @@ namespace RentalCar.DataLayer.Repository
     /// <summary>
     /// Obługa customera z bazą danych
     /// </summary>
-    class CustomerRepository : BasicRepository<Customer>
+    public class CustomerRepository : BasicRepository<Customer>
     {
         /// <summary>
         /// Dodaje nowego customera
