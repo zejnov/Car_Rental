@@ -9,7 +9,7 @@ using RentalCar.DataLayer.Repository;
 
 namespace RentalCar.BusinessLayer.Services
 {
-    public class CourseDtoServices
+    public class CustomerDtoServices
     {
         /// <summary>
         /// Dodaje nowy, unikatowy nowy Customer, zwraca false jeżeli taki już jest

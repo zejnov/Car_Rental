@@ -126,7 +126,7 @@ namespace RentalCar.Cli
 
             var customerDto = new CustomerDto();
             customerDto = UserInput.GetCustomerDto();
-            /*var success = 
+            var success = CustomerDtoServices.Add(customerDto);
             if (success)
             {
                 Console.WriteLine("Customer added successfully");
@@ -135,8 +135,7 @@ namespace RentalCar.Cli
             {
                 Console.WriteLine("Given customer already exists in the database");
             }
-            */
-
+            
             return true;
         }
 
