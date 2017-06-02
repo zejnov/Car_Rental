@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace RentalCar.BusinessLayer.Dtos
 {
-    public class CarForRentDto
+    public class CustomerDto
     {
         /// <summary>
-        /// ID
+        /// ID klienta
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// Numer rejestracyjny pojazdu
+        /// Imię klienta
         /// </summary>
-        public string RegistrationNumber { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Czy pojazd jest wypożyczony
+        /// Nazwisko klienta
         /// </summary>
-        public bool IsRented { get; set; }
+        public string Surname { get; set; }
 
         /// <summary>
-        /// Typ samochodu
+        /// PESEL klienta (niepowtarzalny)
         /// </summary>
-        public CarTypeDto TypeOfCar { get; set; }
+        public long Pesel { get; set; }
 
         /// <summary>
         /// Lista "wypożyczeń"
@@ -35,9 +35,9 @@ namespace RentalCar.BusinessLayer.Dtos
 
 
         /// <summary>
-        /// Sprawdza czy obiekty są równe
+        /// Sprawdza czy klienci są równi
         /// </summary>
-        /// <param name="obj">ModelDto</param>
+        /// <param name="obj">Model</param>
         /// <returns>IsEqual</returns>
         public override bool Equals(object obj)
         {
@@ -46,13 +46,13 @@ namespace RentalCar.BusinessLayer.Dtos
                 return false;
             }
 
-            var carForRentDto = obj as CarForRentDto;
+            var customerDto = obj as CustomerDto;
 
             bool isEqual = true;
-            isEqual &= Id == carForRentDto.Id;
-            isEqual &= RegistrationNumber == carForRentDto.RegistrationNumber;
-            isEqual &= IsRented == carForRentDto.IsRented;
-            isEqual &= TypeOfCar.Equals(carForRentDto.TypeOfCar);
+            isEqual &= Id == customerDto.Id;
+            isEqual &= Name == customerDto.Name;
+            isEqual &= Surname == customerDto.Surname;
+            isEqual &= Pesel == customerDto.Pesel;
 
             return isEqual;
         }

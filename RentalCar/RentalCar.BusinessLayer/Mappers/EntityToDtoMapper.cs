@@ -10,7 +10,56 @@ namespace RentalCar.BusinessLayer.Mappers
 {
     public class EntityToDtoMapper
     {
-        //public static CustomerDto CustomerEntityModelToDto (CustomerDto)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="carsRentedByCustomers"></param>
+        /// <returns></returns>
+        public static CarsRentedByCustomersDto CarsRentedByCustomersEntityModelToDto(CarsRentedByCustomers carsRentedByCustomers)
+        {
+            if (carsRentedByCustomers == null)
+            {
+                return null;
+            }
+
+            return new CarsRentedByCustomersDto()
+            {
+                Id = carsRentedByCustomers.Id,
+                CarForRental = 
+                    CarForRentEntityModelToDto(carsRentedByCustomers.CarForRental),
+
+                Customer = CustomerEntityModelToDto(carsRentedByCustomers.Customer),
+                RentalDateTime = carsRentedByCustomers.RentalDateTime
+            
+            };
+
+        }
+
+        /// <summary>
+        /// Mapuje Customer z Entity do Dto
+        /// </summary>
+        /// <param name="customerDto">Model</param>
+        /// <returns>ModelDto</returns>
+        public static CustomerDto CustomerEntityModelToDto(Customer customer)
+        {
+            if (customer == null)
+            {
+                return null;
+            }
+
+            return new CustomerDto()
+            {
+                Id = customer.Id,
+                Name = customer.Name,
+                Surname = customer.Surname,
+                Pesel = customer.Pesel,
+                CarsRentedByCustomersList = customer
+                    .CarsRentedByCustomersList
+                    .Select(CarsRentedByCustomersEntityModelToDto)
+                    .ToList(),
+            };
+            
+        }
 
         /// <summary>
         /// Mapuje CarForRent z Entity do Dto
@@ -29,11 +78,14 @@ namespace RentalCar.BusinessLayer.Mappers
                 Id = carForRent.Id,
                 RegistrationNumber = carForRent.RegistrationNumber,
                 IsRented = carForRent.IsRented,
-                TypeOfCar = CarTypeEntityModelToDto(carForRent.TypeOfCar)
+                TypeOfCar = CarTypeEntityModelToDto(carForRent.TypeOfCar),
+                CarsRentedByCustomersList = carForRent
+                    .CarsRentedByCustomersList
+                    .Select(CarsRentedByCustomersEntityModelToDto)
+                    .ToList(),
             };
         }
-
-
+        
         /// <summary>
         /// Mapuje CarType z Entity do Dto
         /// </summary>

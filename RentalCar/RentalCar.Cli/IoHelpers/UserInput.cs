@@ -25,7 +25,7 @@ namespace RentalCar.Cli.IoHelpers
             {
                 try
                 {
-                    Console.WriteLine(message);
+                    Console.Write(message + " ");
                     return (T) Convert.ChangeType(Console.ReadLine(), typeof(T));
                 }
                 catch (ArgumentNullException)
@@ -74,6 +74,26 @@ namespace RentalCar.Cli.IoHelpers
                 carForRentDto.TypeOfCar = ChooseFromList.CarTypeDto(carTypeList);
             
             return carForRentDto;
+        }
+
+        /// <summary>
+        /// Pobieranie danych klienta
+        /// </summary>
+        /// <returns>CustomerDto</returns>
+        public static CustomerDto GetCustomerDto()
+        {
+            var customerDto = new CustomerDto();
+            customerDto.Name = GetData<string>("Provide customer name: ");
+            customerDto.Surname = GetData<string>("Provide customer surname: ");
+            customerDto.Pesel = GetData<long>("Provide customer PESEL");
+
+            while (!CustomerDtoServices.CheckPesel(customerDto.Pesel))
+            {
+                Console.WriteLine("You provide wrong PESEL, try again");
+                customerDto.Pesel = GetData<long>("Provide registration number: ");
+            }
+            
+            return customerDto;
         }
     }
 }

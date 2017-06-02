@@ -1,32 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RentalCar.DataLayer.Models
 {
-    public class CarForRent
+    public class Customer
     {
         /// <summary>
-        /// ID
+        /// ID klienta
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// Numer rejestracyjny pojazdu
+        /// Imię klienta
         /// </summary>
-        public string RegistrationNumber { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Czy pojazd jest wypożyczony
+        /// Nazwisko klienta
         /// </summary>
-        public bool IsRented { get; set; }
+        public string Surname { get; set; }
 
         /// <summary>
-        /// Typ samochodu
+        /// PESEL klienta (niepowtarzalny)
         /// </summary>
-        public CarType TypeOfCar { get; set; }
+        public long Pesel { get; set; }
 
         /// <summary>
         /// Lista "wypożyczeń"
@@ -34,7 +35,7 @@ namespace RentalCar.DataLayer.Models
         public List<CarsRentedByCustomers> CarsRentedByCustomersList { get; set; } = new List<CarsRentedByCustomers>();
 
         /// <summary>
-        /// Sprawdza czy obiekty są równe
+        /// Sprawdza czy klienci są równi
         /// </summary>
         /// <param name="obj">Model</param>
         /// <returns>IsEqual</returns>
@@ -45,16 +46,15 @@ namespace RentalCar.DataLayer.Models
                 return false;
             }
 
-            var carForRent = obj as CarForRent;
+            var customer = obj as Customer;
 
-            bool isEqual=true;
-            isEqual &= Id == carForRent.Id;
-            isEqual &= RegistrationNumber == carForRent.RegistrationNumber;
-            isEqual &= IsRented == carForRent.IsRented;
-            isEqual &= TypeOfCar.Equals(carForRent.TypeOfCar);
-            
+            bool isEqual = true;
+            isEqual &= Id == customer.Id;
+            isEqual &= Name == customer.Name;
+            isEqual &= Surname == customer.Surname;
+            isEqual &= Pesel == customer.Pesel;
+
             return isEqual;
         }
-
     }
 }

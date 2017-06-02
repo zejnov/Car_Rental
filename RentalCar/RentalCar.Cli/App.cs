@@ -44,6 +44,8 @@ namespace RentalCar.Cli
             //Help i Exit zawsze na dole
             _commandDispatcher.AddCommand("AddCarType", "Add new car type", AddCarTypeAction);
             _commandDispatcher.AddCommand("AddCarForRent", "Add new car for rent", AddCarForRentAction);
+            _commandDispatcher.AddCommand("AddCustomer", "Add customer to database", AddCustomerAction);
+            _commandDispatcher.AddCommand("RentCar", "Renting the car to customer", RentCarAction);
             _commandDispatcher.AddCommand("Help", "Show all available commands", HelpAction);
             _commandDispatcher.AddCommand("Exit", "Close program", ExitAction);
         }
@@ -99,6 +101,7 @@ namespace RentalCar.Cli
         private bool AddCarForRentAction()
         {
             Console.Clear();
+
             var carForRentDto = new CarForRentDto();
             carForRentDto = UserInput.GetCarForRentDto();
             var success = CarForRentDtoServices.Add(carForRentDto);
@@ -110,6 +113,75 @@ namespace RentalCar.Cli
             else
             {
                 Console.WriteLine("Given car already exists in the database");
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Dodawanie Klienta do bazy (Imie, nazwisko, PESEL)
+        /// </summary>
+        /// <returns></returns>
+        private bool AddCustomerAction()
+        {
+            Console.Clear();
+
+            var customerDto = new CustomerDto();
+            customerDto = UserInput.GetCustomerDto();
+            var success = CustomerDtoServices.Add(customerDto);
+
+            if (success)
+            {
+                Console.WriteLine("Customer added successfully");
+            }
+            else
+            {
+                Console.WriteLine("Given customer already exists in the database");
+            }
+            
+            return true;
+        }
+
+        /// <summary>
+        /// Łączy klienta z pojazdem w określonej dacie .Now
+        /// </summary>
+        /// <returns></returns>
+        private bool RentCarAction()
+        {
+            Console.Clear();
+
+            var rentingCar = new CarsRentedByCustomersDto();
+
+            var choosenCustomer = ChooseFromList
+                .CustomerDto(CustomerDtoServices.GetAll());
+
+            if (choosenCustomer == null)
+            {
+                Console.WriteLine("There is no customers");
+                return true;
+            }
+
+            rentingCar.Customer = choosenCustomer;
+
+            var choosenCar = ChooseFromList
+                .CarAvalibleForRent(CarForRentDtoServices.GetAll());
+
+            if (choosenCar == null)
+            {
+                Console.WriteLine("There is no car to rent!");
+                return true;
+            }
+
+            rentingCar.CarForRental = choosenCar;
+
+            var success = CarRentedByCustomerServices.Add(rentingCar);
+            
+            if (success)
+            {
+                Console.WriteLine("Renting operation ended successfully");
+            }
+            else
+            {
+                Console.WriteLine("Given customer already exists in the database");
             }
             return true;
         }
