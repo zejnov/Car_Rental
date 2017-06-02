@@ -11,6 +11,30 @@ namespace RentalCar.BusinessLayer.Mappers
     public class DtoToEntityMapper
     {
         /// <summary>
+        ///
+        /// </summary>
+        /// <param name="carsRentedByCustomers"></param>
+        /// <returns></returns>
+        public static CarsRentedByCustomers CarsRentedByCustomersDtoToEntity(CarsRentedByCustomersDto carsRentedByCustomers)
+        {
+            if (carsRentedByCustomers == null)
+            {
+                return null;
+            }
+
+            return new CarsRentedByCustomers()
+            {
+                Id = carsRentedByCustomers.Id,
+                CarForRental =
+                    CarForRentEntityModelToDto(carsRentedByCustomers.CarForRental),
+
+                Customer = CustomerDtoToEntityModel(carsRentedByCustomers.Customer),
+                RentalDateTime = carsRentedByCustomers.RentalDateTime
+            };
+
+        }
+
+        /// <summary>
         /// Mapuje Customer z Dto do Entity
         /// </summary>
         /// <param name="customerDto">ModelDto</param>
@@ -27,7 +51,11 @@ namespace RentalCar.BusinessLayer.Mappers
                 Id = customerDto.Id,
                 Name = customerDto.Name,
                 Surname = customerDto.Surname,
-                Pesel = customerDto.Pesel
+                Pesel = customerDto.Pesel,
+                CarsRentedByCustomersList = customerDto
+                    .CarsRentedByCustomersList
+                    .Select(CarsRentedByCustomersDtoToEntity)
+                    .ToList(),
             };
 
         }
@@ -49,7 +77,11 @@ namespace RentalCar.BusinessLayer.Mappers
                 Id = carForRent.Id,
                 RegistrationNumber = carForRent.RegistrationNumber,
                 IsRented = carForRent.IsRented,
-                TypeOfCar = CarTypeDtoToEntityModel(carForRent.TypeOfCar)
+                TypeOfCar = CarTypeDtoToEntityModel(carForRent.TypeOfCar),
+                CarsRentedByCustomersList = carForRent
+                    .CarsRentedByCustomersList
+                    .Select(CarsRentedByCustomersDtoToEntity)
+                    .ToList(),
             };
         }
 
