@@ -12,7 +12,7 @@ namespace RentalCar.DataLayer.Models
         /// <summary>
         /// ID klienta
         /// </summary>
-        [Key] //takie cuś wyczytałem
+        //[Key] //takie cuś wyczytałem
         public int Id { get; set; }
 
         /// <summary>
