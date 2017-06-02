@@ -73,5 +73,33 @@ namespace RentalCar.Cli.IoHelpers
 
             return customerDto[answer - 1];
         }
+
+        public static CarForRentDto CarAvalibleForRent(List<CarForRentDto> carForRentDto)
+        {
+            int answer = 1;
+            bool isAnswerCorrect = false;
+
+            int i = 1;
+
+            carForRentDto = carForRentDto.FindAll(p => !p.IsRented);
+            foreach (var car in carForRentDto)
+            {
+                Printer.PrintOrderedList(car, i++);
+            }
+
+            Console.WriteLine();
+            Console.Write("Please, chose number:");
+
+            while (!isAnswerCorrect)
+            {
+                answer = Int32.Parse(Console.ReadLine());
+                isAnswerCorrect = answer > 0 && answer <= carForRentDto.Count;
+
+                if (!isAnswerCorrect)
+                    Console.Write("Incorrect answer. Try again: ");
+            }
+
+            return carForRentDto[answer - 1];
+        }
     }
 }
