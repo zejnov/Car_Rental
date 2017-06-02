@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using RentalCar.DataLayer.Models;
 using RentalCar.DataLayer.Repository.Basic;
+using RentalCar.DataLayer.Repository.Interfaces;
 
 namespace RentalCar.DataLayer.Repository
 { 
     /// <summary>
     /// Obługa customera z bazą danych
     /// </summary>
-    public class CustomerRepository : BasicRepository<Customer>
+    public class CustomerRepository : BasicRepository<Customer>, ICustomerRepository
     {
         /// <summary>
         /// Dodaje nowego customera
