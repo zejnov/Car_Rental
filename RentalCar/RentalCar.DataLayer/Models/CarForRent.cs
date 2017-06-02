@@ -31,7 +31,7 @@ namespace RentalCar.DataLayer.Models
         /// <summary>
         /// Sprawdza czy obiekty są równe
         /// </summary>
-        /// <param name="obj">ModelDto</param>
+        /// <param name="obj">Model</param>
         /// <returns>IsEqual</returns>
         public override bool Equals(object obj)
         {
