@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentalCar.BusinessLayer.Dtos
 {
-    class CustomerDto
+    public class CustomerDto
     {
         /// <summary>
         /// ID klienta

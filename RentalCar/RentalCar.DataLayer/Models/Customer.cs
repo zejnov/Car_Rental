@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RentalCar.DataLayer.Models
 {
-    class Customer
+    public class Customer
     {
         /// <summary>
         /// ID klienta
