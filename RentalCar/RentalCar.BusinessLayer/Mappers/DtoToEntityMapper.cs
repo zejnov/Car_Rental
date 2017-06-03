@@ -80,10 +80,10 @@ namespace RentalCar.BusinessLayer.Mappers
                 RegistrationNumber = carForRent.RegistrationNumber,
                 IsRented = carForRent.IsRented,
                 TypeOfCar = CarTypeDtoToEntityModel(carForRent.TypeOfCar),
-                CarsRentedByCustomersList = carForRent
-                    .CarsRentedByCustomersList
-                    .Select(CarsRentedByCustomersDtoToEntity)
-                    .ToList(),
+                //CarsRentedByCustomersList = carForRent
+                //    .CarsRentedByCustomersList
+                //    .Select(CarsRentedByCustomersDtoToEntity)
+                //    .ToList(),
             };
         }
 

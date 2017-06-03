@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,7 @@ namespace RentalCar.DataLayer.Repository
         public override List<Customer> GetAll()
         {
             return ExecuteQuery(dbContext => dbContext.CustomersDbSet
+                .Include(p => p.CarsRentedByCustomersList.Select(x => x.CarForRental.TypeOfCar))
                 .ToList());
         }
 
