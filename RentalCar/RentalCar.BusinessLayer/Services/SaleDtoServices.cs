@@ -22,7 +22,7 @@ namespace RentalCar.BusinessLayer.Services
             if (Exist(saleDto))
                 return false;
 
-            return new SaleRepository().Add(DtoToEntityMapper.SaleEntityModelToDto(saleDto));
+            return new SaleRepository().Add(DtoToEntityMapper.SaleDtoToEntity(saleDto));
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace RentalCar.BusinessLayer.Services
         public static bool Exist(SaleDto saleDto)
         {
             return new SaleRepository()
-                .Exist(DtoToEntityMapper.SaleEntityModelToDto(saleDto));
+                .Exist(DtoToEntityMapper.SaleDtoToEntity(saleDto));
         }
 
         /// <summary>
@@ -49,3 +49,4 @@ namespace RentalCar.BusinessLayer.Services
         }
     }
 }
+

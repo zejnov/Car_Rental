@@ -160,14 +160,23 @@ namespace RentalCar.Cli
             sale.Name = UserInput.GetData<string>("Provide sale name: ");
 
             sale.AmmountPercentage = UserInput.GetData<int>("Provide sale value: ");
-            while (sale.AmmountPercentage > 0 && sale.AmmountPercentage <=100)
+            while (!(sale.AmmountPercentage > 0 && sale.AmmountPercentage <= 100))
             {
                 sale.AmmountPercentage = UserInput.GetData<int>
                      ("You must provide value between <1-100>%, please try again");
             }
+            
+            var success = SaleDtoServices.Add(sale);
 
-            //TODO: proceed witch sale to ->Service->Repo
-
+            if (success)
+            {
+                Console.WriteLine("Sale added successfully");
+            }
+            else
+            {
+                Console.WriteLine("Given sale already exists in the database");
+            }
+            
             return true;
         }
 

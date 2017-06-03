@@ -83,6 +83,7 @@ namespace CustomerApp.Cli
         /// <returns></returns>
         private bool LoginAction()
         {
+            int i = 1; //do drukowania listy wypożyczeń
             var pesel = UserInput.GetCustomerPesel();
 
             var customer = new CustomerDto
@@ -95,7 +96,16 @@ namespace CustomerApp.Cli
             if (exist)
             {
             Console.WriteLine($"{pesel} found in database");
-                //TODO Print Renting history
+
+                //TODO Get CustomerDto from base,
+                //Todo Print Renting history
+                _loggedCustomer = customer; //"login"
+                var rentalHistory = _loggedCustomer.CarsRentedByCustomersList;
+                foreach (var rental in rentalHistory)
+                {
+                Printer.PrintOrderedList(rental, i++);
+                }
+
             }
             else
             { 
