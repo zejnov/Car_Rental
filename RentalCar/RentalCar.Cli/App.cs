@@ -175,7 +175,7 @@ namespace RentalCar.Cli
 
             rentingCar.CarForRental = choosenCar;
 
-            var success = CarRentedByCustomerServices.Add(rentingCar);
+            var success = CarRentedByCustomerDtoServices.Add(rentingCar);
             
             if (success)
             {
