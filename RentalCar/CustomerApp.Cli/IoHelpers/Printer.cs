@@ -46,9 +46,9 @@ namespace CustomerApp.Cli.IoHelpers
         /// </summary>
         /// <param name="dateTime">DataTime</param>
         /// <returns>Data string</returns>
-        public static string StringDate(DateTime dateTime)
+        public static string StringDate(DateTime? dateTime)
         {
-            return ($"{dateTime.Day}/{dateTime.Month}/{dateTime.Year}");
+            return ($"{dateTime.Value.Day}/{dateTime.Value.Month}/{dateTime.Value.Year}");
         }
     }
 }
