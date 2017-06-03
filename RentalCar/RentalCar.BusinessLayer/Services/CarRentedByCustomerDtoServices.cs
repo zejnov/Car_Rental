@@ -9,7 +9,7 @@ using RentalCar.DataLayer.Repository;
 
 namespace RentalCar.BusinessLayer.Services
 {
-    public class CarRentedByCustomerServices
+    public class CarRentedByCustomerDtoServices
     {
         /// <summary>
         /// Dodaje nowy, unikatowy nowy Customer, zwraca false jeżeli taki już jest
@@ -18,7 +18,7 @@ namespace RentalCar.BusinessLayer.Services
         /// <returns></returns>
         public static bool Add(CarsRentedByCustomersDto carRentedByCustomersDto)
         {
-            carRentedByCustomersDto.RentalDateTime = DateTime.Now;
+            carRentedByCustomersDto.RentalDateTime = DateTime.Today;
 
             //if (Exist(carRentedByCustomersDto))
              //   return false;
@@ -48,6 +48,20 @@ namespace RentalCar.BusinessLayer.Services
                 .GetAll()
                 .Select(EntityToDtoMapper.CarsRentedByCustomersEntityModelToDto)
                 .ToList();
+        }
+
+        public static double GetPrice(CarsRentedByCustomersDto rented)
+        {
+            var rentingTime = DateTime.Today - rented.RentalDateTime;
+
+            double price = rentingTime.Days * rented.CarForRental.TypeOfCar.PricePerDay;
+
+            if (rented.Customer.CarsRentedByCustomersList.Count >= 10)
+            {
+                price = price - (price / 100) * 5;
+            }
+
+            return price;
         }
     }
 }
