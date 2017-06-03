@@ -46,6 +46,8 @@ namespace RentalCar.Cli
             _commandDispatcher.AddCommand("AddCarForRent", "Add new car for rent", AddCarForRentAction);
             _commandDispatcher.AddCommand("AddCustomer", "Add customer to database", AddCustomerAction);
             _commandDispatcher.AddCommand("RentCar", "Renting the car to customer", RentCarAction);
+            _commandDispatcher.AddCommand("ReturnCar", "Returning car to rental", ReturnCarAction);
+
             _commandDispatcher.AddCommand("Help", "Show all available commands", HelpAction);
             _commandDispatcher.AddCommand("Exit", "Close program", ExitAction);
         }
@@ -183,6 +185,32 @@ namespace RentalCar.Cli
             {
                 Console.WriteLine("Given customer already exists in the database");
             }
+            return true;
+        }
+
+        private bool ReturnCarAction()
+        {
+            Console.Clear();
+
+            //var rentingCar = new CarsRentedByCustomersDto();
+
+            var choosenCustomer = ChooseFromList
+                .CustomerDto(CustomerDtoServices.GetAll());
+
+            if (choosenCustomer == null)
+            {
+                Console.WriteLine("There is no customers");
+                return true;
+            }
+            
+            var choosenRental = ChooseFromList
+                .CarsRentedByCustomer(choosenCustomer.CarsRentedByCustomersList);
+
+            Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Date));
+            
+
+            //TODO: Proceed whith action ;D
+
             return true;
         }
 
