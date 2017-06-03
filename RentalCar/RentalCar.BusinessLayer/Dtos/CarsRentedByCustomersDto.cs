@@ -39,6 +39,11 @@ namespace RentalCar.BusinessLayer.Dtos
         /// </summary>
         public bool IsReturned { get; set; }
 
+        /// <summary>
+        /// Całkowity koszt wyporzyczenia
+        /// </summary>
+        public double TotalPrice { get; set; }
+
 
         public override bool Equals(object obj)
         {

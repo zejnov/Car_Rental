@@ -56,6 +56,7 @@ namespace RentalCar.BusinessLayer.Mappers
 
                 RentalDateTime = carsRentedByCustomers.RentalDateTime,
                 ReturnDateTime = carsRentedByCustomers.ReturnDateTime,
+                TotalPrice = carsRentedByCustomers.TotalPrice,
                 IsReturned = carsRentedByCustomers.IsReturned
             };
 
