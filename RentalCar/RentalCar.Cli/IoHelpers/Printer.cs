@@ -51,6 +51,11 @@ namespace RentalCar.Cli.IoHelpers
                 $"{ordinal}. {car.TypeOfCar.Mark} {car.TypeOfCar.Model} {car.TypeOfCar.PricePerDay}zl/day {car.RegistrationNumber}");
         }
 
+        /// <summary>
+        /// Wyświetla listę samochodów wyporzyczonych przez klienta
+        /// </summary>
+        /// <param name="rentalCar"></param>
+        /// <param name="ordinal"></param>
         public static void PrintOrderedList(CarsRentedByCustomersDto rentalCar, int ordinal)
         {
             Console.WriteLine(

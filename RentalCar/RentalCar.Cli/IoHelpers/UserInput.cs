@@ -90,7 +90,7 @@ namespace RentalCar.Cli.IoHelpers
             while (!CustomerDtoServices.CheckPesel(customerDto.Pesel))
             {
                 Console.WriteLine("You provide wrong PESEL, try again");
-                customerDto.Pesel = GetData<long>("Provide registration number: ");
+                customerDto.Pesel = GetData<long>("Provide PESEL: ");
             }
             
             return customerDto;
