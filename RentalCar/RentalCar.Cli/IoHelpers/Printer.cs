@@ -55,7 +55,7 @@ namespace RentalCar.Cli.IoHelpers
         {
             Console.WriteLine(
                 $"{ordinal}. {rentalCar.CarForRental.RegistrationNumber} {rentalCar.CarForRental.TypeOfCar.Mark} {rentalCar.CarForRental.TypeOfCar.Model}" +
-                $"\nRented since " + StringDate(rentalCar.RentalDateTime));
+                $"\nRented since " + StringDate(rentalCar.RentalDateTime.Value));
         }
 
         /// <summary>
