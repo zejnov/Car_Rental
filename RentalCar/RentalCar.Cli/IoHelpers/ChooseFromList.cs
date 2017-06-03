@@ -183,7 +183,7 @@ namespace RentalCar.Cli.IoHelpers
             }
 
             var tmp = sales;
-            sales.Clear();
+            sales = new List<SaleDto>();
             sales.Add(new SaleDto()
             {
                 Name = "Bez promocji",

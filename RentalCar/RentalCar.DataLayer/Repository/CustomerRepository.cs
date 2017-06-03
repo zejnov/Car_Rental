@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using RentalCar.DataLayer.Models;
@@ -64,6 +65,20 @@ namespace RentalCar.DataLayer.Repository
                     .FirstOrDefault(p => p.Pesel == model.Pesel);
 
                 return data != null;
+            });
+        }
+
+        /// <summary>
+        /// Pobiera klienta po peselu
+        /// </summary>
+        /// <param name="pesel"></param>
+        /// <returns></returns>
+        public Customer Get(long pesel)
+        {
+            return ExecuteQuery(dbContext =>
+            {
+                return dbContext.CustomersDbSet
+                    .First(p => p.Pesel == pesel);
             });
         }
     }
