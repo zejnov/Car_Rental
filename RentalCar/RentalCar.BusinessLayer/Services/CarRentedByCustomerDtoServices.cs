@@ -55,18 +55,32 @@ namespace RentalCar.BusinessLayer.Services
         /// </summary>
         /// <param name="rented"></param>
         /// <returns></returns>
-        public static double GetPrice(CarsRentedByCustomersDto rented, CustomerDto customerDto)
+        public static double GetPrice(CarsRentedByCustomersDto rented, int rabat)
         {
             var rentingTime = DateTime.Today - rented.RentalDateTime;
 
             double price = rentingTime.Value.Days * rented.CarForRental.TypeOfCar.PricePerDay;
 
-            if (customerDto.CarsRentedByCustomersList.Count >= 10)
-            {
-                price = price - (price / 100) * 5;
-            }
+            price = price - (price / 100 * rabat);
+
+            if (price < 0)
+                price = 0;
 
             return price;
+        }
+
+        public static int SummRabat(CustomerDto customer, int choosenSale)
+        {
+            int rabat = choosenSale;
+            if (customer.CarsRentedByCustomersList.Count >= 10)
+            {
+                rabat += 5;
+            }
+
+            if (rabat > 100)
+                rabat = 100;
+
+            return rabat;
         }
 
         /// <summary>

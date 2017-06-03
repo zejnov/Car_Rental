@@ -56,5 +56,13 @@ namespace RentalCar.BusinessLayer.Services
         {
             return pesel.ToString().Length == 11;
         }
+
+        public static CustomerDto Get(long pesel)
+        {
+            if (!Exist(new CustomerDto() {Pesel = pesel}))
+                return null;
+
+            return EntityToDtoMapper.CustomerEntityModelToDto(new CustomerRepository().Get(pesel));
+        }
     }
 }
