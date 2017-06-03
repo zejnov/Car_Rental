@@ -45,12 +45,14 @@ namespace RentalCar.Cli
             _commandDispatcher.AddCommand("AddCarType", "Add new car type", AddCarTypeAction);
             _commandDispatcher.AddCommand("AddCarForRent", "Add new car for rent", AddCarForRentAction);
             _commandDispatcher.AddCommand("AddCustomer", "Add customer to database", AddCustomerAction);
+            _commandDispatcher.AddCommand("AddSale", "Add new sale", AddSaleAction);
             _commandDispatcher.AddCommand("RentCar", "Renting the car to customer", RentCarAction);
             _commandDispatcher.AddCommand("ReturnCar", "Returning car to rental", ReturnCarAction);
-
             _commandDispatcher.AddCommand("Help", "Show all available commands", HelpAction);
             _commandDispatcher.AddCommand("Exit", "Close program", ExitAction);
         }
+
+        
 
         /// <summary>
         /// Odpalenie działania w pętli
@@ -140,6 +142,28 @@ namespace RentalCar.Cli
                 Console.WriteLine("Given customer already exists in the database");
             }
             
+            return true;
+        }
+
+        /// <summary>
+        /// Dodaje nową promocję
+        /// </summary>
+        /// <returns></returns>
+        private bool AddSaleAction()
+        {
+            Console.Clear();
+            var sale = new SaleDto();
+            sale.Name = UserInput.GetData<string>("Provide sale name: ");
+
+            sale.AmmountPercentage = UserInput.GetData<int>("Provide sale value: ");
+            while (sale.AmmountPercentage > 0 && sale.AmmountPercentage <=100)
+            {
+                sale.AmmountPercentage = UserInput.GetData<int>
+                     ("You must provide value between <1-100>%, please try again");
+            }
+
+            //TODO: proceed witch sale to ->Service->Repo
+
             return true;
         }
 

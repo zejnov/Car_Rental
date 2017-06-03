@@ -10,6 +10,27 @@ namespace RentalCar.BusinessLayer.Mappers
 {
     public class EntityToDtoMapper
     {
+
+        /// <summary>
+        /// Mapuje Sale z Entity do Dto
+        /// </summary>
+        /// <param name="sale">Model</param>
+        /// <returns>ModelDto</returns>
+        public static SaleDto SaleEntityModelToDto(Sale sale)
+        {
+            if (sale == null)
+            {
+                return null;
+            }
+            return new SaleDto()
+            {
+                Id = sale.Id,
+                Name = sale.Name,
+                AmmountPercentage = sale.AmmountPercentage
+            };
+        }
+
+
         ///// <summary>
         ///// 
         ///// </summary>
@@ -37,7 +58,7 @@ namespace RentalCar.BusinessLayer.Mappers
         //}
 
         /// <summary>
-        /// 
+        /// Mapuje relację Customer - CarForRent z Entity do Dto
         /// </summary>
         /// <param name="carsRentedByCustomers"></param>
         /// <returns></returns>
