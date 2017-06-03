@@ -29,6 +29,11 @@ namespace RentalCar.DataLayer.Models
         /// </summary>
         public DateTime RentalDateTime { get; set; }
 
+        /// <summary>
+        /// Zwraca czy został oddany do wyporzyczalni
+        /// </summary>
+        public bool IsReturned { get; set; }
+
         public override bool Equals(object obj)
         {
             if (obj == null)
