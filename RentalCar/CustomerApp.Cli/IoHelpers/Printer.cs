@@ -8,7 +8,7 @@ using RentalCar.BusinessLayer.Dtos;
 
 namespace CustomerApp.Cli.IoHelpers
 {
-    class Printer
+    public static class Printer
     {
         /// <summary>
         /// Wyświetla info o commandAction
