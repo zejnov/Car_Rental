@@ -230,10 +230,19 @@ namespace RentalCar.Cli
             var choosenRental = ChooseFromList
                 .CarsRentedByCustomer(choosenCustomer.CarsRentedByCustomersList);
 
-            Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Date));
-            
+            if (choosenRental == null)
+            {
+                Console.WriteLine("There is no cars to return");
+                return true;
+            }
 
-            //TODO: Proceed whith action ;D
+            Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Value.Date));
+
+            var price = CarRentedByCustomerDtoServices.GetPrice(choosenRental, choosenCustomer);
+
+            Console.WriteLine($"Your price is {price} zł");
+
+            CarRentedByCustomerDtoServices.ReturnCar(choosenRental, price);
 
             return true;
         }

@@ -27,12 +27,12 @@ namespace RentalCar.BusinessLayer.Dtos
         /// <summary>
         /// Data wypożyczenia
         /// </summary>
-        public DateTime RentalDateTime { get; set; }
+        public DateTime? RentalDateTime { get; set; }
 
         /// <summary>
         /// Data zwrócenia
         /// </summary>
-        public DateTime ReturnDateTime { get; set; }
+        public DateTime? ReturnDateTime { get; set; }
 
         /// <summary>
         /// Zwraca czy został oddany do wyporzyczalni

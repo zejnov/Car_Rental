@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,21 @@ namespace RentalCar.DataLayer.Repository
         {
             return ExecuteQuery(dbContext =>
             {
-                dbContext.CustomersDbSet.Attach(model.Customer);
-                dbContext.CarForRentsDbSet.Attach(model.CarForRental);
+                //dbContext.CustomersDbSet.Attach(model.Customer);
+                //dbContext.CarForRentsDbSet.Attach(model.CarForRental);
+
+                model.Customer = dbContext.CustomersDbSet
+                    .First(p => p.Pesel == model.Customer.Pesel);
+
+                model.CarForRental =
+                    dbContext.CarForRentsDbSet
+                    .First(p => p.RegistrationNumber == model.CarForRental.RegistrationNumber);
 
                 model.CarForRental.IsRented = true;
                 model.IsReturned = false;
+                model.ReturnDateTime = null;
+                model.TotalPrice = 0;
+                
 
                 dbContext.CarsRentedByCustomersesDbSet.Add(model);
 
@@ -77,6 +88,27 @@ namespace RentalCar.DataLayer.Repository
                         && p.RentalDateTime.Equals(model.RentalDateTime));
 
                 return data != null;
+            });
+        }
+
+        public bool Return(CarsRentedByCustomers model)
+        {
+            return ExecuteQuery(dbContext =>
+            {
+                dbContext.CarsRentedByCustomersesDbSet.Attach(model);
+
+                ((IObjectContextAdapter)dbContext).ObjectContext
+                    .ObjectStateManager
+                    .ChangeObjectState(model, EntityState.Modified);
+
+                //var rented = Get(model.Id);
+                model.ReturnDateTime = DateTime.Today;
+                model.IsReturned = true;
+                model.CarForRental.IsRented = false;
+                model.TotalPrice = model.TotalPrice;
+
+               
+                return true;
             });
         }
     }
