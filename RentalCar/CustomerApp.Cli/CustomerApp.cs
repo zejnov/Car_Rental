@@ -91,12 +91,13 @@ namespace CustomerApp.Cli
                 Pesel = pesel,
             };
 
-            var exist = CustomerDtoServices.Exist(customer);
+            var success = CustomerDtoServices.Exist(customer);
 
-            if (exist)
+            if (success)
             {
             Console.WriteLine($"{pesel} found in database");
 
+              //  var succsess = CustomerDtoServices
                 //TODO Get CustomerDto from base,
                 //Todo Print Renting history
                 _loggedCustomer = customer; //"login"
