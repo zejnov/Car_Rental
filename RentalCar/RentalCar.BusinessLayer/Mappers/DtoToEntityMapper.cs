@@ -15,7 +15,7 @@ namespace RentalCar.BusinessLayer.Mappers
         /// </summary>
         /// <param name="sale">ModelDto</param>
         /// <returns>Model</returns>
-        public static Sale SaleEntityModelToDto(SaleDto sale)
+        public static Sale SaleDtoToEntity(SaleDto sale)
         {
             if (sale == null)
             {
