@@ -69,5 +69,22 @@ namespace RentalCar.BusinessLayer.Services
 
             return EntityToDtoMapper.CustomerEntityModelToDto(new CustomerRepository().Get(pesel));
         }
+
+        /// <summary>
+        /// Uaktualnia dane personalne
+        /// </summary>
+        /// <param name="oldCustomer">Stary klient</param>
+        /// <param name="newCustomer">Nowy klient</param>
+        /// <returns></returns>
+        public static bool UpadtePersonalData(CustomerDto oldCustomer,CustomerDto newCustomer)
+        {
+            if (!Exist(oldCustomer))
+                return false;
+
+            return new CustomerRepository()
+                .UpdatePersonalData(
+                    DtoToEntityMapper.CustomerDtoToEntityModel(oldCustomer),
+                    DtoToEntityMapper.CustomerDtoToEntityModel(newCustomer));
+        }
     }
 }
