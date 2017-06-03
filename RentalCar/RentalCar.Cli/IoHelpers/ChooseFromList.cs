@@ -17,7 +17,7 @@ namespace RentalCar.Cli.IoHelpers
         /// Pyta użytkownika o wybranie konkretnego modelu
         /// </summary>
         /// <param name="carTypes"></param>
-        /// <returns></returns>
+        /// <returns>CarType</returns>
         public static CarTypeDto CarTypeDto(List<CarTypeDto> carTypes)
         {
             int answer = 1;
@@ -48,7 +48,7 @@ namespace RentalCar.Cli.IoHelpers
         /// Pyta użytkownika o wybranie konkretnego klienta
         /// </summary>
         /// <param name="customerDto"></param>
-        /// <returns></returns>
+        /// <returns>Customer</returns>
         public static CustomerDto CustomerDto(List<CustomerDto> customerDto)
         {
             int answer = 1;
@@ -80,6 +80,11 @@ namespace RentalCar.Cli.IoHelpers
             return customerDto[answer - 1];
         }
 
+        /// <summary>
+        /// Pyta użytkownika o wybranie konkretnego dostępnego samochodu
+        /// </summary>
+        /// <param name="customerForRentDto"></param>
+        /// <returns>CarForRent</returns>
         public static CarForRentDto CarAvalibleForRent(List<CarForRentDto> carForRentDto)
         {
             int answer = 1;
@@ -113,5 +118,17 @@ namespace RentalCar.Cli.IoHelpers
 
             return carForRentDto[answer - 1];
         }
+
+        /// <summary>
+        /// Pyta użytkownika o wybranie konkretnego wypożyczonego samochodu klientowi
+        /// </summary>
+        /// <param name="customerForRentDto"></param>
+        /// <returns>CarForRent</returns>
+        //public static CarsRentedByCustomersDto CarsRentedByCustomers(
+        //    List<CarsRentedByCustomersDto> carsRentedByCustomers)
+        //{
+
+        //    return carsRentedByCustomers[answer - 1];
+        //}
     }
 }

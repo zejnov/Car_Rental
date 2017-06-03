@@ -50,6 +50,13 @@ namespace RentalCar.Cli.IoHelpers
                 $"{ordinal}. {car.TypeOfCar.Mark} {car.TypeOfCar.Model} {car.TypeOfCar.PricePerDay}zl/day {car.RegistrationNumber}");
         }
 
+        public static void PrintOrderedList(CarsRentedByCustomersDto rentalCar, int ordinal)
+        {
+            Console.WriteLine(
+                $"{ordinal}. {rentalCar.CarForRental.RegistrationNumber} {rentalCar.CarForRental.TypeOfCar.Mark} {rentalCar.CarForRental.TypeOfCar.Model}" +
+                $" rented by {rentalCar.Customer.Name} {rentalCar.Customer.Surname}, since {rentalCar.RentalDateTime.Date}");
+        }
+
         /// <summary>
         /// Drukuje liste CarType zgromadzoną w liście
         /// </summary>
