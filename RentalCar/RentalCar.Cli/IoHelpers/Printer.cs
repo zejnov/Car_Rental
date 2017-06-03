@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,7 +55,7 @@ namespace RentalCar.Cli.IoHelpers
         {
             Console.WriteLine(
                 $"{ordinal}. {rentalCar.CarForRental.RegistrationNumber} {rentalCar.CarForRental.TypeOfCar.Mark} {rentalCar.CarForRental.TypeOfCar.Model}" +
-                $" rented by {rentalCar.Customer.Name} {rentalCar.Customer.Surname}, since {rentalCar.RentalDateTime.Date}");
+                $"\nRented since " + StringDate(rentalCar.RentalDateTime));
         }
 
         /// <summary>
@@ -69,5 +70,16 @@ namespace RentalCar.Cli.IoHelpers
                                   $"costs {carType.PricePerDay} per day");
             }
         }
+
+        /// <summary>
+        /// zwraca date w przyzwoitym formacie
+        /// </summary>
+        /// <param name="dateTime">DataTime</param>
+        /// <returns>Data string</returns>
+        public static string StringDate(DateTime dateTime)
+        {
+            return ($"{dateTime.Day}/{dateTime.Month}/{dateTime.Year}");
+        }
+
     }
 }

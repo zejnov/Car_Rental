@@ -120,15 +120,43 @@ namespace RentalCar.Cli.IoHelpers
         }
 
         /// <summary>
-        /// Pyta użytkownika o wybranie konkretnego wypożyczonego samochodu klientowi
+        /// Pyta użytkownika o wybranie konkretnego wypożyczonego przez klienta samochodu
         /// </summary>
-        /// <param name="customerForRentDto"></param>
+        /// <param name="carsRentedByCustomer">Lista samochodów wyprozyczonych przez klienta</param>
         /// <returns>CarForRent</returns>
-        //public static CarsRentedByCustomersDto CarsRentedByCustomers(
-        //    List<CarsRentedByCustomersDto> carsRentedByCustomers)
-        //{
+        public static CarsRentedByCustomersDto CarsRentedByCustomer(
+            List<CarsRentedByCustomersDto> carsRentedByCustomer)
+        {
+            int answer = 1;
+            bool isAnswerCorrect = false;
 
-        //    return carsRentedByCustomers[answer - 1];
-        //}
+            int i = 1;
+
+            carsRentedByCustomer = carsRentedByCustomer.FindAll(a => true);
+
+            if (carsRentedByCustomer.Count == 0)
+            {
+                return null;
+            }
+
+            foreach (var car in carsRentedByCustomer)
+            {
+                Printer.PrintOrderedList(car, i++);
+            }
+
+            Console.WriteLine();
+            Console.Write("Please, choose number:");
+
+            while (!isAnswerCorrect)
+            {
+                answer = Int32.Parse(Console.ReadLine());
+                isAnswerCorrect = answer > 0 && answer <= carsRentedByCustomer.Count;
+
+                if (!isAnswerCorrect)
+                    Console.Write("Incorrect answer. Try again: ");
+            }
+            
+            return carsRentedByCustomer[answer - 1];
+        }
     }
 }

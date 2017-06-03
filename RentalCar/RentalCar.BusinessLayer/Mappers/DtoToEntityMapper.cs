@@ -29,9 +29,12 @@ namespace RentalCar.BusinessLayer.Mappers
                     CarForRentEntityModelToDto(carsRentedByCustomers.CarForRental),
 
                 Customer = CustomerDtoToEntityModel(carsRentedByCustomers.Customer),
-                RentalDateTime = carsRentedByCustomers.RentalDateTime,
 
+                RentalDateTime = carsRentedByCustomers.RentalDateTime,
+                ReturnDateTime = carsRentedByCustomers.ReturnDateTime,
+                TotalPrice = carsRentedByCustomers.TotalPrice,
                 IsReturned = carsRentedByCustomers.IsReturned
+                
             };
 
         }
@@ -80,10 +83,10 @@ namespace RentalCar.BusinessLayer.Mappers
                 RegistrationNumber = carForRent.RegistrationNumber,
                 IsRented = carForRent.IsRented,
                 TypeOfCar = CarTypeDtoToEntityModel(carForRent.TypeOfCar),
-                CarsRentedByCustomersList = carForRent
-                    .CarsRentedByCustomersList
-                    .Select(CarsRentedByCustomersDtoToEntity)
-                    .ToList(),
+                //CarsRentedByCustomersList = carForRent
+                //    .CarsRentedByCustomersList
+                //    .Select(CarsRentedByCustomersDtoToEntity)
+                //    .ToList(),
             };
         }
 
