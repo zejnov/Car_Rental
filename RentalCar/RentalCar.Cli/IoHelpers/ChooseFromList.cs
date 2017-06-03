@@ -132,7 +132,7 @@ namespace RentalCar.Cli.IoHelpers
 
             int i = 1;
 
-            carsRentedByCustomer = carsRentedByCustomer.FindAll(a => true);
+            carsRentedByCustomer = carsRentedByCustomer.FindAll(p => !p.IsReturned);
 
             if (carsRentedByCustomer.Count == 0)
             {

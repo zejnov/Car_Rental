@@ -31,7 +31,7 @@ namespace RentalCar.BusinessLayer.Dtos
         /// <summary>
         /// Lista "wypożyczeń"
         /// </summary>
-        public List<CarsRentedByCustomersDto> CarsRentedByCustomersList { get; set; }// = new List<CarsRentedByCustomersDto>();
+        public List<CarsRentedByCustomersDto> CarsRentedByCustomersList { get; set; } = new List<CarsRentedByCustomersDto>();
 
 
         /// <summary>

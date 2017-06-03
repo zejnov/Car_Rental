@@ -55,18 +55,32 @@ namespace RentalCar.BusinessLayer.Services
         /// </summary>
         /// <param name="rented"></param>
         /// <returns></returns>
-        public static double GetPrice(CarsRentedByCustomersDto rented)
+        public static double GetPrice(CarsRentedByCustomersDto rented, CustomerDto customerDto)
         {
             var rentingTime = DateTime.Today - rented.RentalDateTime;
 
-            double price = rentingTime.Days * rented.CarForRental.TypeOfCar.PricePerDay;
+            double price = rentingTime.Value.Days * rented.CarForRental.TypeOfCar.PricePerDay;
 
-            if (rented.Customer.CarsRentedByCustomersList.Count >= 10)
+            if (customerDto.CarsRentedByCustomersList.Count >= 10)
             {
                 price = price - (price / 100) * 5;
             }
 
             return price;
+        }
+
+        /// <summary>
+        /// Wywołuje repo które zwraca auto
+        /// </summary>
+        /// <param name="rent"></param>
+        /// <returns></returns>
+        public static bool ReturnCar(CarsRentedByCustomersDto rent, double price)
+        {
+            rent.TotalPrice = price;
+            rent.ReturnDateTime = DateTime.Today;
+
+            return new CarRentedByCustomerRepository()
+                .Return(DtoToEntityMapper.CarsRentedByCustomersDtoToEntity(rent));
         }
     }
 }
