@@ -29,8 +29,9 @@ namespace RentalCar.BusinessLayer.Mappers
                     CarForRentEntityModelToDto(carsRentedByCustomers.CarForRental),
 
                 Customer = CustomerDtoToEntityModel(carsRentedByCustomers.Customer),
-                RentalDateTime = carsRentedByCustomers.RentalDateTime,
 
+                RentalDateTime = carsRentedByCustomers.RentalDateTime,
+                ReturnDateTime = carsRentedByCustomers.ReturnDateTime,
                 IsReturned = carsRentedByCustomers.IsReturned
             };
 

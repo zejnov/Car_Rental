@@ -208,6 +208,7 @@ namespace RentalCar.Cli
 
             Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Date));
             
+
             //TODO: Proceed whith action ;D
 
             return true;
