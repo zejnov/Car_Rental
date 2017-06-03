@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using RentalCar.DataLayer.Models;
 using RentalCar.DataLayer.Repository.Basic;
+using RentalCar.DataLayer.Repository.Interfaces;
 
 namespace RentalCar.DataLayer.Repository
 {
-    public class SaleRepository : BasicRepository<Sale>
+    public class SaleRepository : BasicRepository<Sale>, ISaleRepository
     {
         /// <summary>
         /// Dodawanie modelu Sale do bazy danych

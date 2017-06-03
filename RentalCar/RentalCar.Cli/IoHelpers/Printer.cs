@@ -33,6 +33,16 @@ namespace RentalCar.Cli.IoHelpers
         /// <summary>
         /// Wyświetla element listy z danymi klienta
         /// </summary>
+        /// <param name="sale"></param>
+        /// <param name="ordinal"></param>
+        public static void PrintOrderedList(SaleDto sale, int ordinal)
+        {
+            Console.WriteLine($"{ordinal}. {sale.Name} {sale.AmmountPercentage}%");
+        }
+
+        /// <summary>
+        /// Wyświetla element listy z danymi klienta
+        /// </summary>
         /// <param name="customer"></param>
         /// <param name="ordinal"></param>
         public static void PrintOrderedList(CustomerDto customer, int ordinal)

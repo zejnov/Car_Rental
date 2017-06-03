@@ -108,6 +108,10 @@ namespace RentalCar.Cli
 
             var carForRentDto = new CarForRentDto();
             carForRentDto = UserInput.GetCarForRentDto();
+
+            if (carForRentDto == null)
+                return true;
+
             var success = CarForRentDtoServices.Add(carForRentDto);
 
             if (success)
@@ -247,7 +251,12 @@ namespace RentalCar.Cli
 
             Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Value.Date));
 
-            var price = CarRentedByCustomerDtoServices.GetPrice(choosenRental, choosenCustomer);
+            var rabat =
+                CarRentedByCustomerDtoServices.SummRabat(
+                    choosenCustomer,
+                    ChooseFromList.Sale(SaleDtoServices.GetAll()));
+
+            var price = CarRentedByCustomerDtoServices.GetPrice(choosenRental, rabat);
 
             Console.WriteLine($"Your price is {price} zł");
 
