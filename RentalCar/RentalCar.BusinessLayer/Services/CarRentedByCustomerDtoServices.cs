@@ -50,6 +50,11 @@ namespace RentalCar.BusinessLayer.Services
                 .ToList();
         }
 
+        /// <summary>
+        /// Zwraca kwotę z możliwym rabatem
+        /// </summary>
+        /// <param name="rented"></param>
+        /// <returns></returns>
         public static double GetPrice(CarsRentedByCustomersDto rented)
         {
             var rentingTime = DateTime.Today - rented.RentalDateTime;
