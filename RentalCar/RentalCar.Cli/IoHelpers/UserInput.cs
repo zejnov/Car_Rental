@@ -72,6 +72,11 @@ namespace RentalCar.Cli.IoHelpers
 
             var carTypeList = CarTypeDtoServices.GetAll();
                 carForRentDto.TypeOfCar = ChooseFromList.CarTypeDto(carTypeList);
+
+            if (carForRentDto.TypeOfCar == null)
+            {
+                return null;
+            }
             
             return carForRentDto;
         }

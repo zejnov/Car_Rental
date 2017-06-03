@@ -69,7 +69,8 @@
     <Compile Include="Repository\Interfaces\ICustomerRepository.cs" />
     <Compile Include="Repository\Interfaces\ICarForRentRepository.cs" />
     <Compile Include="Repository\Interfaces\ICarTypeRepository.cs" />
-    <Compile Include="Repository\SaleRepository.cs" />
+    <Compile Include="Repository\ISaleRepository.cs" />
+    <Compile Include="Repository\Interfaces\SaleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
