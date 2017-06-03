@@ -91,6 +91,11 @@ namespace RentalCar.DataLayer.Repository
             });
         }
 
+        /// <summary>
+        /// Zwraca auto aktualizując date i stan
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool Return(CarsRentedByCustomers model)
         {
             return ExecuteQuery(dbContext =>
