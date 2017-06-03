@@ -57,6 +57,7 @@
     <Compile Include="Services\CarRentedByCustomerDtoServices.cs" />
     <Compile Include="Services\CarTypeDtoServices.cs" />
     <Compile Include="Services\CustomerDtoServices.cs" />
+    <Compile Include="Services\SaleDtoServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
