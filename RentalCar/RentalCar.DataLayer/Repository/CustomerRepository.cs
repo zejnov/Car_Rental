@@ -78,6 +78,7 @@ namespace RentalCar.DataLayer.Repository
             return ExecuteQuery(dbContext =>
             {
                 return dbContext.CustomersDbSet
+                    .Include(p => p.CarsRentedByCustomersList.Select(x => x.CarForRental.TypeOfCar))
                     .First(p => p.Pesel == pesel);
             });
         }

@@ -26,9 +26,17 @@ namespace CustomerApp.Cli.IoHelpers
         /// <param name="ordinal"></param>
         public static void PrintOrderedList(CarsRentedByCustomersDto rentalCar, int ordinal)
         {
-            Console.WriteLine(
-                $"{ordinal}. {rentalCar.CarForRental.RegistrationNumber} {rentalCar.CarForRental.TypeOfCar.Mark} {rentalCar.CarForRental.TypeOfCar.Model}" +
-                $"\nRented since " + StringDate(rentalCar.RentalDateTime));
+            if (rentalCar.IsReturned)
+            {
+                Console.WriteLine(
+                    $"{ordinal}. {rentalCar.CarForRental.RegistrationNumber} {rentalCar.CarForRental.TypeOfCar.Mark} {rentalCar.CarForRental.TypeOfCar.Model}" +
+                    $"\nRented from  {StringDate(rentalCar.RentalDateTime)} to {StringDate(rentalCar.ReturnDateTime)}, price: {rentalCar.TotalPrice}zl");
+            }
+            else
+            {
+                Console.WriteLine($"{ordinal}. {rentalCar.CarForRental.RegistrationNumber} {rentalCar.CarForRental.TypeOfCar.Mark} {rentalCar.CarForRental.TypeOfCar.Model}");
+                Console.WriteLine($"Current in use since {rentalCar.RentalDateTime.Value.ToShortDateString()}");
+            }
         }
 
         /// <summary>

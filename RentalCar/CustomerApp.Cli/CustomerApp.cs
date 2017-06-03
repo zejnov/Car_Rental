@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,13 +50,11 @@ namespace CustomerApp.Cli
         {
             //Help i Exit zawsze na dole
             _commandDispatcher.AddCommand("Login", "Login with customer Pesel", LoginAction);
+            _commandDispatcher.AddCommand("Change", "Change your name and surname", ChangeDataAction);
             _commandDispatcher.AddCommand("Logout", "Longout from system", LogoutAction);
             _commandDispatcher.AddCommand("Help", "Show all available commands", HelpAction);
             _commandDispatcher.AddCommand("Exit", "Close program", ExitAction);
         }
-
-        
-
 
         /// <summary>
         /// Odpalenie działania w pętli
@@ -76,6 +75,36 @@ namespace CustomerApp.Cli
                         Console.WriteLine($"Unknow command: {command}");
             }
         }
+        
+        /// <summary>
+        /// Zmiana danych urzytkownika
+        /// </summary>
+        /// <returns></returns>
+        private bool ChangeDataAction()
+        {
+            if (_loggedCustomer == null)
+            {
+                Console.WriteLine("You must be logged at first!");
+                return true;
+            }
+
+            var updatedCustomer = new CustomerDto();
+            updatedCustomer.Name = UserInput.GetData<string>("New name");
+            updatedCustomer.Surname = UserInput.GetData<string>("New surname");
+
+            if (CustomerDtoServices.UpadtePersonalData(_loggedCustomer, updatedCustomer))
+            {
+                Console.WriteLine("Update successful");
+                _loggedCustomer.Name = updatedCustomer.Name;
+                _loggedCustomer.Surname = updatedCustomer.Surname;
+            }
+            else
+            {
+                Console.WriteLine("Something went wrong!");
+            }
+
+            return true;
+        }
 
         /// <summary>
         /// Logowanie peselem, drukuje historię wypożyczeń
@@ -86,30 +115,29 @@ namespace CustomerApp.Cli
             int i = 1; //do drukowania listy wypożyczeń
             var pesel = UserInput.GetCustomerPesel();
 
-            //var customer = new CustomerDto
-            //{
-            //    Pesel = pesel,
-            //};
-
             var customer = CustomerDtoServices.Get(pesel);
 
             if (customer != null)
             {
-                Console.WriteLine($"{pesel} found in database");
-
                 _loggedCustomer = customer; //"login"
 
-                var rentalHistory = _loggedCustomer.CarsRentedByCustomersList;
+                var rentalHistory = customer.CarsRentedByCustomersList;
+
+                if (rentalHistory.Count == 0)
+                {
+                    Console.WriteLine("There is no history");
+                }
 
                 foreach (var rental in rentalHistory)
                 {
-                     Printer.PrintOrderedList(rental, i++);
+                    Printer.PrintOrderedList(rental, i++);
+                    Console.WriteLine();
                 }
 
             }
             else
             { 
-            Console.WriteLine($"{pesel} not found in database");
+                Console.WriteLine($"{pesel} not found in database");
             }
 
             return true;
