@@ -57,6 +57,11 @@ namespace RentalCar.BusinessLayer.Services
             return pesel.ToString().Length == 11;
         }
 
+        /// <summary>
+        /// Pobiera użytkownika po peselu, null jezeli on nie istnieje
+        /// </summary>
+        /// <param name="pesel"></param>
+        /// <returns></returns>
         public static CustomerDto Get(long pesel)
         {
             if (!Exist(new CustomerDto() {Pesel = pesel}))

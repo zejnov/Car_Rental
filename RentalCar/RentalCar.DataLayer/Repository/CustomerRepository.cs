@@ -81,5 +81,23 @@ namespace RentalCar.DataLayer.Repository
                     .First(p => p.Pesel == pesel);
             });
         }
+
+        /// <summary>
+        /// Zmienia dane personalne klienta
+        /// </summary>
+        /// <param name="oldModel"></param>
+        /// <param name="newModel"></param>
+        /// <returns></returns>
+        public bool UpdatePersonalData(Customer oldModel, Customer newModel)
+        {
+            return ExecuteQuery(dbContext =>
+            {
+                dbContext.CustomersDbSet.Attach(oldModel);
+                oldModel.Name = newModel.Name;
+                oldModel.Surname = newModel.Surname;
+
+                return true;
+            });
+        }
     }
 }
