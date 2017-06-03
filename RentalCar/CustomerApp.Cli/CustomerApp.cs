@@ -86,24 +86,24 @@ namespace CustomerApp.Cli
             int i = 1; //do drukowania listy wypożyczeń
             var pesel = UserInput.GetCustomerPesel();
 
-            var customer = new CustomerDto
+            //var customer = new CustomerDto
+            //{
+            //    Pesel = pesel,
+            //};
+
+            var customer = CustomerDtoServices.Get(pesel);
+
+            if (customer != null)
             {
-                Pesel = pesel,
-            };
+                Console.WriteLine($"{pesel} found in database");
 
-            var exist = CustomerDtoServices.Exist(customer);
-
-            if (exist)
-            {
-            Console.WriteLine($"{pesel} found in database");
-
-                //TODO Get CustomerDto from base,
-                //Todo Print Renting history
                 _loggedCustomer = customer; //"login"
+
                 var rentalHistory = _loggedCustomer.CarsRentedByCustomersList;
+
                 foreach (var rental in rentalHistory)
                 {
-                Printer.PrintOrderedList(rental, i++);
+                     Printer.PrintOrderedList(rental, i++);
                 }
 
             }
