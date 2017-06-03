@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,16 @@ namespace RentalCar.Cli.IoHelpers
         /// <summary>
         /// Wyświetla element listy z danymi klienta
         /// </summary>
+        /// <param name="sale"></param>
+        /// <param name="ordinal"></param>
+        public static void PrintOrderedList(SaleDto sale, int ordinal)
+        {
+            Console.WriteLine($"{ordinal}. {sale.Name} {sale.AmmountPercentage}%");
+        }
+
+        /// <summary>
+        /// Wyświetla element listy z danymi klienta
+        /// </summary>
         /// <param name="customer"></param>
         /// <param name="ordinal"></param>
         public static void PrintOrderedList(CustomerDto customer, int ordinal)
@@ -51,6 +62,18 @@ namespace RentalCar.Cli.IoHelpers
         }
 
         /// <summary>
+        /// Wyświetla listę samochodów wyporzyczonych przez klienta
+        /// </summary>
+        /// <param name="rentalCar"></param>
+        /// <param name="ordinal"></param>
+        public static void PrintOrderedList(CarsRentedByCustomersDto rentalCar, int ordinal)
+        {
+            Console.WriteLine(
+                $"{ordinal}. {rentalCar.CarForRental.RegistrationNumber} {rentalCar.CarForRental.TypeOfCar.Mark} {rentalCar.CarForRental.TypeOfCar.Model}" +
+                $"\nRented since " + StringDate(rentalCar.RentalDateTime.Value));
+        }
+
+        /// <summary>
         /// Drukuje liste CarType zgromadzoną w liście
         /// </summary>
         /// <param name="carTypeList"></param>
@@ -62,5 +85,16 @@ namespace RentalCar.Cli.IoHelpers
                                   $"costs {carType.PricePerDay} per day");
             }
         }
+
+        /// <summary>
+        /// zwraca date w przyzwoitym formacie
+        /// </summary>
+        /// <param name="dateTime">DataTime</param>
+        /// <returns>Data string</returns>
+        public static string StringDate(DateTime dateTime)
+        {
+            return ($"{dateTime.Day}/{dateTime.Month}/{dateTime.Year}");
+        }
+
     }
 }

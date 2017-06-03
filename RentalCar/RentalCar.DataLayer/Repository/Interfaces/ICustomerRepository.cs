@@ -9,5 +9,7 @@ namespace RentalCar.DataLayer.Repository.Interfaces
         bool Exist(Customer model);
         Customer Get(int id);
         List<Customer> GetAll();
+        bool UpdatePersonalData(Customer oldModel, Customer newModel);
+        Customer Get(long pesel);
     }
 }

@@ -45,10 +45,14 @@ namespace RentalCar.Cli
             _commandDispatcher.AddCommand("AddCarType", "Add new car type", AddCarTypeAction);
             _commandDispatcher.AddCommand("AddCarForRent", "Add new car for rent", AddCarForRentAction);
             _commandDispatcher.AddCommand("AddCustomer", "Add customer to database", AddCustomerAction);
+            _commandDispatcher.AddCommand("AddSale", "Add new sale", AddSaleAction);
             _commandDispatcher.AddCommand("RentCar", "Renting the car to customer", RentCarAction);
+            _commandDispatcher.AddCommand("ReturnCar", "Returning car to rental", ReturnCarAction);
             _commandDispatcher.AddCommand("Help", "Show all available commands", HelpAction);
             _commandDispatcher.AddCommand("Exit", "Close program", ExitAction);
         }
+
+        
 
         /// <summary>
         /// Odpalenie działania w pętli
@@ -104,6 +108,10 @@ namespace RentalCar.Cli
 
             var carForRentDto = new CarForRentDto();
             carForRentDto = UserInput.GetCarForRentDto();
+
+            if (carForRentDto == null)
+                return true;
+
             var success = CarForRentDtoServices.Add(carForRentDto);
 
             if (success)
@@ -142,6 +150,37 @@ namespace RentalCar.Cli
         }
 
         /// <summary>
+        /// Dodaje nową promocję
+        /// </summary>
+        /// <returns></returns>
+        private bool AddSaleAction()
+        {
+            Console.Clear();
+            var sale = new SaleDto();
+            sale.Name = UserInput.GetData<string>("Provide sale name: ");
+
+            sale.AmmountPercentage = UserInput.GetData<int>("Provide sale value: ");
+            while (!(sale.AmmountPercentage > 0 && sale.AmmountPercentage <= 100))
+            {
+                sale.AmmountPercentage = UserInput.GetData<int>
+                     ("You must provide value between <1-100>%, please try again");
+            }
+            
+            var success = SaleDtoServices.Add(sale);
+
+            if (success)
+            {
+                Console.WriteLine("Sale added successfully");
+            }
+            else
+            {
+                Console.WriteLine("Given sale already exists in the database");
+            }
+            
+            return true;
+        }
+
+        /// <summary>
         /// Łączy klienta z pojazdem w określonej dacie .Now
         /// </summary>
         /// <returns></returns>
@@ -173,7 +212,7 @@ namespace RentalCar.Cli
 
             rentingCar.CarForRental = choosenCar;
 
-            var success = CarRentedByCustomerServices.Add(rentingCar);
+            var success = CarRentedByCustomerDtoServices.Add(rentingCar);
             
             if (success)
             {
@@ -183,6 +222,46 @@ namespace RentalCar.Cli
             {
                 Console.WriteLine("Given customer already exists in the database");
             }
+            return true;
+        }
+
+        private bool ReturnCarAction()
+        {
+            Console.Clear();
+
+            //var rentingCar = new CarsRentedByCustomersDto();
+
+            var choosenCustomer = ChooseFromList
+                .CustomerDto(CustomerDtoServices.GetAll());
+
+            if (choosenCustomer == null)
+            {
+                Console.WriteLine("There is no customers");
+                return true;
+            }
+            
+            var choosenRental = ChooseFromList
+                .CarsRentedByCustomer(choosenCustomer.CarsRentedByCustomersList);
+
+            if (choosenRental == null)
+            {
+                Console.WriteLine("There is no cars to return");
+                return true;
+            }
+
+            Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Value.Date));
+
+            var rabat =
+                CarRentedByCustomerDtoServices.SummRabat(
+                    choosenCustomer,
+                    ChooseFromList.Sale(SaleDtoServices.GetAll()));
+
+            var price = CarRentedByCustomerDtoServices.GetPrice(choosenRental, rabat);
+
+            Console.WriteLine($"Your price is {price} zł");
+
+            CarRentedByCustomerDtoServices.ReturnCar(choosenRental, price);
+
             return true;
         }
 

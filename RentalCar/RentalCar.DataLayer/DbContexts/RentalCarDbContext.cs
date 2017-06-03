@@ -35,6 +35,11 @@ namespace RentalCar.DataLayer.DbContexts
         public DbSet<Customer> CustomersDbSet { get; set; }
 
         /// <summary>
+        /// Tabela z Promocjami
+        /// </summary>
+        public DbSet<Sale> SaleDbSet { get; set; }
+
+        /// <summary>
         /// Tabela z many to many
         /// </summary>
         public DbSet<CarsRentedByCustomers> CarsRentedByCustomersesDbSet { get; set; }

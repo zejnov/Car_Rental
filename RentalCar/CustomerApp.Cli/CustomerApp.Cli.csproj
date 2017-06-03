@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0ABC04DB-F7CE-4A7A-99EB-9DCA5DC37699}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>RentalCar.BusinessLayer</RootNamespace>
-    <AssemblyName>RentalCar.BusinessLayer</AssemblyName>
+    <ProjectGuid>{C36C1E7D-C024-4546-99A7-12414262E749}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CustomerApp.Cli</RootNamespace>
+    <AssemblyName>CustomerApp.Cli</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,11 +31,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,27 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\CarForRentDto.cs" />
-    <Compile Include="Dtos\CarsRentedByCustomersDto.cs" />
-    <Compile Include="Dtos\CarTypeDto.cs" />
-    <Compile Include="Dtos\CustomerDto.cs" />
-    <Compile Include="Dtos\SaleDto.cs" />
-    <Compile Include="Mappers\DtoToEntityMapper.cs" />
-    <Compile Include="Mappers\EntityToDtoMapper.cs" />
+    <Compile Include="Commands\CommandAction.cs" />
+    <Compile Include="Commands\CommandDispatcher.cs" />
+    <Compile Include="CustomerApp.cs" />
+    <Compile Include="IoHelpers\Printer.cs" />
+    <Compile Include="IoHelpers\UserInput.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CarForRentDtoServices.cs" />
-    <Compile Include="Services\CarRentedByCustomerDtoServices.cs" />
-    <Compile Include="Services\CarTypeDtoServices.cs" />
-    <Compile Include="Services\CustomerDtoServices.cs" />
-    <Compile Include="Services\SaleDtoServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RentalCar.DataLayer\RentalCar.DataLayer.csproj">
-      <Project>{c44fea52-579e-4338-af6b-0bf10f1ad43e}</Project>
-      <Name>RentalCar.DataLayer</Name>
+    <ProjectReference Include="..\RentalCar.BusinessLayer\RentalCar.BusinessLayer.csproj">
+      <Project>{0abc04db-f7ce-4a7a-99eb-9dca5dc37699}</Project>
+      <Name>RentalCar.BusinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

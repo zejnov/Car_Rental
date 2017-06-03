@@ -72,6 +72,11 @@ namespace RentalCar.Cli.IoHelpers
 
             var carTypeList = CarTypeDtoServices.GetAll();
                 carForRentDto.TypeOfCar = ChooseFromList.CarTypeDto(carTypeList);
+
+            if (carForRentDto.TypeOfCar == null)
+            {
+                return null;
+            }
             
             return carForRentDto;
         }
@@ -90,7 +95,7 @@ namespace RentalCar.Cli.IoHelpers
             while (!CustomerDtoServices.CheckPesel(customerDto.Pesel))
             {
                 Console.WriteLine("You provide wrong PESEL, try again");
-                customerDto.Pesel = GetData<long>("Provide registration number: ");
+                customerDto.Pesel = GetData<long>("Provide PESEL: ");
             }
             
             return customerDto;

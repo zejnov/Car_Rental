@@ -9,5 +9,6 @@ namespace RentalCar.DataLayer.Repository.Interfaces
         bool Exist(CarsRentedByCustomers model);
         CarsRentedByCustomers Get(int id);
         List<CarsRentedByCustomers> GetAll();
+        bool Return(CarsRentedByCustomers model);
     }
 }

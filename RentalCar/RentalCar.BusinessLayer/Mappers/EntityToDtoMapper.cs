@@ -10,8 +10,55 @@ namespace RentalCar.BusinessLayer.Mappers
 {
     public class EntityToDtoMapper
     {
+
         /// <summary>
-        /// 
+        /// Mapuje Sale z Entity do Dto
+        /// </summary>
+        /// <param name="sale">Model</param>
+        /// <returns>ModelDto</returns>
+        public static SaleDto SaleEntityModelToDto(Sale sale)
+        {
+            if (sale == null)
+            {
+                return null;
+            }
+            return new SaleDto()
+            {
+                Id = sale.Id,
+                Name = sale.Name,
+                AmmountPercentage = sale.AmmountPercentage
+            };
+        }
+
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="carsRentedByCustomers"></param>
+        ///// <returns></returns>
+        //public static CarsRentedByCustomersDto CarsRentedByCustomersEntityModelToDto(CarsRentedByCustomers carsRentedByCustomers)
+        //{
+        //    if (carsRentedByCustomers == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    return new CarsRentedByCustomersDto()
+        //    {
+        //        Id = carsRentedByCustomers.Id,
+        //        CarForRental = 
+        //            CarForRentEntityModelToDto(carsRentedByCustomers.CarForRental),
+
+        //        Customer = CustomerEntityModelToDto(carsRentedByCustomers.Customer),
+        //        RentalDateTime = carsRentedByCustomers.RentalDateTime,
+
+        //        IsReturned = carsRentedByCustomers.IsReturned
+        //    };
+
+        //}
+
+        /// <summary>
+        /// Mapuje relację Customer - CarForRent z Entity do Dto
         /// </summary>
         /// <param name="carsRentedByCustomers"></param>
         /// <returns></returns>
@@ -25,15 +72,43 @@ namespace RentalCar.BusinessLayer.Mappers
             return new CarsRentedByCustomersDto()
             {
                 Id = carsRentedByCustomers.Id,
-                CarForRental = 
+                CarForRental =
                     CarForRentEntityModelToDto(carsRentedByCustomers.CarForRental),
 
-                Customer = CustomerEntityModelToDto(carsRentedByCustomers.Customer),
-                RentalDateTime = carsRentedByCustomers.RentalDateTime
-            
+                RentalDateTime = carsRentedByCustomers.RentalDateTime,
+                ReturnDateTime = carsRentedByCustomers.ReturnDateTime,
+
+                TotalPrice = carsRentedByCustomers.TotalPrice,
+                IsReturned = carsRentedByCustomers.IsReturned
             };
 
         }
+
+        ///// <summary>
+        ///// Mapuje Customer z Entity do Dto
+        ///// </summary>
+        ///// <param name="customerDto">Model</param>
+        ///// <returns>ModelDto</returns>
+        //public static CustomerDto CustomerEntityModelToDto(Customer customer)
+        //{
+        //    if (customer == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    return new CustomerDto()
+        //    {
+        //        Id = customer.Id,
+        //        Name = customer.Name,
+        //        Surname = customer.Surname,
+        //        Pesel = customer.Pesel,
+        //        CarsRentedByCustomersList = customer
+        //            .CarsRentedByCustomersList
+        //            .Select(CarsRentedByCustomersEntityModelToDto)
+        //            .ToList(),
+        //    };
+            
+        //}
 
         /// <summary>
         /// Mapuje Customer z Entity do Dto
@@ -58,15 +133,40 @@ namespace RentalCar.BusinessLayer.Mappers
                     .Select(CarsRentedByCustomersEntityModelToDto)
                     .ToList(),
             };
-            
+
         }
+
+        ///// <summary>
+        ///// Mapuje CarForRent z Entity do Dto
+        ///// </summary>
+        ///// <param name="carForRent">Model</param>
+        ///// <returns>ModelDto</returns>
+        //public static CarForRentDto CarForRentEntityModelToDto (CarForRent carForRent)
+        //{
+        //    if (carForRent == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    return new CarForRentDto
+        //    {
+        //        Id = carForRent.Id,
+        //        RegistrationNumber = carForRent.RegistrationNumber,
+        //        IsRented = carForRent.IsRented,
+        //        TypeOfCar = CarTypeEntityModelToDto(carForRent.TypeOfCar),
+        //        CarsRentedByCustomersList = carForRent
+        //            .CarsRentedByCustomersList
+        //            .Select(CarsRentedByCustomersEntityModelToDto)
+        //            .ToList(),
+        //    };
+        //}
 
         /// <summary>
         /// Mapuje CarForRent z Entity do Dto
         /// </summary>
         /// <param name="carForRent">Model</param>
         /// <returns>ModelDto</returns>
-        public static CarForRentDto CarForRentEntityModelToDto (CarForRent carForRent)
+        public static CarForRentDto CarForRentEntityModelToDto(CarForRent carForRent)
         {
             if (carForRent == null)
             {
@@ -79,13 +179,9 @@ namespace RentalCar.BusinessLayer.Mappers
                 RegistrationNumber = carForRent.RegistrationNumber,
                 IsRented = carForRent.IsRented,
                 TypeOfCar = CarTypeEntityModelToDto(carForRent.TypeOfCar),
-                CarsRentedByCustomersList = carForRent
-                    .CarsRentedByCustomersList
-                    .Select(CarsRentedByCustomersEntityModelToDto)
-                    .ToList(),
             };
         }
-        
+
         /// <summary>
         /// Mapuje CarType z Entity do Dto
         /// </summary>

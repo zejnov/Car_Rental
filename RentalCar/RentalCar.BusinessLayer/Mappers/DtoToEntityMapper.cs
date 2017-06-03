@@ -11,6 +11,26 @@ namespace RentalCar.BusinessLayer.Mappers
     public class DtoToEntityMapper
     {
         /// <summary>
+        /// Mapuje Sale z Dto do Entity
+        /// </summary>
+        /// <param name="sale">ModelDto</param>
+        /// <returns>Model</returns>
+        public static Sale SaleDtoToEntity(SaleDto sale)
+        {
+            if (sale == null)
+            {
+                return null;
+            }
+
+            return new Sale()
+            {
+                Id = sale.Id,
+                Name = sale.Name,
+                AmmountPercentage = sale.AmmountPercentage
+            };
+        }
+
+        /// <summary>
         ///
         /// </summary>
         /// <param name="carsRentedByCustomers"></param>
@@ -29,7 +49,12 @@ namespace RentalCar.BusinessLayer.Mappers
                     CarForRentEntityModelToDto(carsRentedByCustomers.CarForRental),
 
                 Customer = CustomerDtoToEntityModel(carsRentedByCustomers.Customer),
-                RentalDateTime = carsRentedByCustomers.RentalDateTime
+
+                RentalDateTime = carsRentedByCustomers.RentalDateTime,
+                ReturnDateTime = carsRentedByCustomers.ReturnDateTime,
+                TotalPrice = carsRentedByCustomers.TotalPrice,
+                IsReturned = carsRentedByCustomers.IsReturned
+                
             };
 
         }
@@ -78,10 +103,10 @@ namespace RentalCar.BusinessLayer.Mappers
                 RegistrationNumber = carForRent.RegistrationNumber,
                 IsRented = carForRent.IsRented,
                 TypeOfCar = CarTypeDtoToEntityModel(carForRent.TypeOfCar),
-                CarsRentedByCustomersList = carForRent
-                    .CarsRentedByCustomersList
-                    .Select(CarsRentedByCustomersDtoToEntity)
-                    .ToList(),
+                //CarsRentedByCustomersList = carForRent
+                //    .CarsRentedByCustomersList
+                //    .Select(CarsRentedByCustomersDtoToEntity)
+                //    .ToList(),
             };
         }
 
