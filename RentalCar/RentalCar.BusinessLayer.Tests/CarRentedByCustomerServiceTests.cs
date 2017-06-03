@@ -5,9 +5,15 @@ using RentalCar.BusinessLayer.Services;
 
 namespace RentalCar.BusinessLayer.Tests
 {
+    /// <summary>
+    /// Testuje customer services
+    /// </summary>
     [TestClass]
     public class CarRentedByCustomerServiceTests
     {
+        /// <summary>
+        /// Sprawdza czy cena bez rabatu jest poprawnie obliczana
+        /// </summary>
         [TestMethod]
         public void GetPrice_ValidCarRentedByCustomerWidthoutRabat_PriceDoubleReturned()
         {
@@ -47,6 +53,9 @@ namespace RentalCar.BusinessLayer.Tests
             Assert.AreEqual(400D, price);
         }
 
+        /// <summary>
+        /// Sprawdza czy cena z rabatem jest poprawnie obliczana
+        /// </summary>
         [TestMethod]
         public void GetPrice_ValidCarRentedByCustomerWidthRabat_PriceDoubleReturned()
         {
