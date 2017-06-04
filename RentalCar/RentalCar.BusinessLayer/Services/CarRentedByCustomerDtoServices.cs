@@ -69,7 +69,7 @@ namespace RentalCar.BusinessLayer.Services
             return price;
         }
 
-        public static int SummRabat(CustomerDto customer, int choosenSale)
+        public static int SumRabat(CustomerDto customer, int choosenSale)
         {
             int rabat = choosenSale;
             if (customer.CarsRentedByCustomersList.Count >= 10)

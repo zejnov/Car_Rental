@@ -252,7 +252,7 @@ namespace RentalCar.Cli
             Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Value.Date));
 
             var rabat =
-                CarRentedByCustomerDtoServices.SummRabat(
+                CarRentedByCustomerDtoServices.SumRabat(
                     choosenCustomer,
                     ChooseFromList.Sale(SaleDtoServices.GetAll()));
 
