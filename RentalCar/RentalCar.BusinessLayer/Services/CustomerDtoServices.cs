@@ -67,7 +67,8 @@ namespace RentalCar.BusinessLayer.Services
             if (!Exist(new CustomerDto() {Pesel = pesel}))
                 return null;
 
-            return EntityToDtoMapper.CustomerEntityModelToDto(new CustomerRepository().Get(pesel));
+            return EntityToDtoMapper.CustomerEntityModelToDto
+                (new CustomerRepository().Get(pesel));
         }
 
         /// <summary>

@@ -98,5 +98,12 @@ namespace RentalCar.BusinessLayer.Tests
 
             Assert.AreEqual(380D, price);
         }
+
+        [TestMethod]
+        public void Test()
+        {
+            
+
+        }
     }
 }
