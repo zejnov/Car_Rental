@@ -1,9 +1,9 @@
 ﻿
-- Jezeli probuje dodac samochod do wyporzyczenia nia majac w systemie zadnych modeli pojazdow mimo wszystko jestem pytany o podanie modelu. Gdy podaje pusty string dostaje wyjatek. Gdy podam liczbe krece sie w kolko.
+- [Almost Fixed] Jezeli probuje dodac samochod do wyporzyczenia nia majac w systemie zadnych modeli pojazdow mimo wszystko jestem pytany o podanie modelu. Gdy podaje pusty string dostaje wyjatek. Gdy podam liczbe krece sie w kolko.
 
 - Generalnie miala byc mozliwosc wpisywania daty wynajmu i zwrotu z placa.
 
-- SumRabat - PolishInglisz
+- [FIXED] SumRabat - PolishInglisz
 
 - Wyjatek przy updacie danych klienta
 

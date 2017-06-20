@@ -257,12 +257,12 @@ namespace RentalCar.Cli
 
             Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Value.Date));
 
-            var rabat =
-                CarRentedByCustomerDtoServices.SumRabat(
+            var discount =
+                CarRentedByCustomerDtoServices.sumDiscount(
                     choosenCustomer,
                     ChooseFromList.Sale(SaleDtoServices.GetAll()));
 
-            var price = CarRentedByCustomerDtoServices.GetPrice(choosenRental, rabat);
+            var price = CarRentedByCustomerDtoServices.GetPrice(choosenRental, discount);
 
             Console.WriteLine($"Your price is {price} zł");
 
