@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarRentedByCustomerServiceTests.cs" />
+    <Compile Include="MappersTest\CustomerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +59,10 @@
     <ProjectReference Include="..\RentalCar.BusinessLayer\RentalCar.BusinessLayer.csproj">
       <Project>{0ABC04DB-F7CE-4A7A-99EB-9DCA5DC37699}</Project>
       <Name>RentalCar.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentalCar.DataLayer\RentalCar.DataLayer.csproj">
+      <Project>{C44FEA52-579E-4338-AF6B-0BF10F1AD43E}</Project>
+      <Name>RentalCar.DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

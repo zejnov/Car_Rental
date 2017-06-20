@@ -8,9 +8,10 @@
 - Wyjatek przy updacie danych klienta
 
 - Lepiej bylo skorzysac z atrybutu TestInitialize, ale ok 
+
 - Dwa testy nie przechodza
 
-- Pokryte testami tylko wyceny i rabatow
+- [Dodane trochę testów mapowania] Pokryte testami tylko wyceny i rabatow 
 
 
 97.5%
