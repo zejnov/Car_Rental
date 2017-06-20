@@ -106,12 +106,18 @@ namespace RentalCar.Cli
         {
             Console.Clear();
 
+            if (CarTypeDtoServices.GetAll().Count == 0)
+            {
+                Console.WriteLine("There are no car types in database");
+                return false;
+            }
+
             var carForRentDto = new CarForRentDto();
             carForRentDto = UserInput.GetCarForRentDto();
 
             if (carForRentDto == null)
                 return true;
-
+            
             var success = CarForRentDtoServices.Add(carForRentDto);
 
             if (success)
