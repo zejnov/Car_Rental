@@ -106,12 +106,18 @@ namespace RentalCar.Cli
         {
             Console.Clear();
 
+            if (CarTypeDtoServices.GetAll().Count == 0)
+            {
+                Console.WriteLine("There are no car types in database");
+                return false;
+            }
+
             var carForRentDto = new CarForRentDto();
             carForRentDto = UserInput.GetCarForRentDto();
 
             if (carForRentDto == null)
                 return true;
-
+            
             var success = CarForRentDtoServices.Add(carForRentDto);
 
             if (success)
@@ -251,12 +257,12 @@ namespace RentalCar.Cli
 
             Console.WriteLine("Choosen rental: {0}",Printer.StringDate(choosenRental.RentalDateTime.Value.Date));
 
-            var rabat =
-                CarRentedByCustomerDtoServices.SumRabat(
+            var discount =
+                CarRentedByCustomerDtoServices.sumDiscount(
                     choosenCustomer,
                     ChooseFromList.Sale(SaleDtoServices.GetAll()));
 
-            var price = CarRentedByCustomerDtoServices.GetPrice(choosenRental, rabat);
+            var price = CarRentedByCustomerDtoServices.GetPrice(choosenRental, discount);
 
             Console.WriteLine($"Your price is {price} zł");
 

@@ -19,7 +19,7 @@ namespace RentalCar.BusinessLayer.Dtos
         public string Name { get; set; }
 
         /// <summary>
-        /// Wartość procentowego rabatu
+        /// Wartość procentowego discountu
         /// </summary>
         public int AmmountPercentage { get; set; }
 

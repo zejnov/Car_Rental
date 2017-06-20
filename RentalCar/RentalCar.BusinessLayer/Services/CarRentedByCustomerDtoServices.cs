@@ -51,17 +51,17 @@ namespace RentalCar.BusinessLayer.Services
         }
 
         /// <summary>
-        /// Zwraca kwotę z możliwym rabatem
+        /// Zwraca kwotę z możliwym discountem
         /// </summary>
         /// <param name="rented"></param>
         /// <returns></returns>
-        public static double GetPrice(CarsRentedByCustomersDto rented, int rabat)
+        public static double GetPrice(CarsRentedByCustomersDto rented, int discount)
         {
             var rentingTime = DateTime.Today - rented.RentalDateTime;
 
             double price = rentingTime.Value.Days * rented.CarForRental.TypeOfCar.PricePerDay;
 
-            price = price - (price / 100 * rabat);
+            price = price - (price / 100 * discount);
 
             if (price < 0)
                 price = 0;
@@ -69,18 +69,18 @@ namespace RentalCar.BusinessLayer.Services
             return price;
         }
 
-        public static int SumRabat(CustomerDto customer, int choosenSale)
+        public static int sumDiscount(CustomerDto customer, int choosenSale)
         {
-            int rabat = choosenSale;
+            int discount = choosenSale;
             if (customer.CarsRentedByCustomersList.Count >= 10)
             {
-                rabat += 5;
+                discount += 5;
             }
 
-            if (rabat > 100)
-                rabat = 100;
+            if (discount > 100)
+                discount = 100;
 
-            return rabat;
+            return discount;
         }
 
         /// <summary>

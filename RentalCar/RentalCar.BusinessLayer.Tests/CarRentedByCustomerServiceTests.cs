@@ -12,10 +12,10 @@ namespace RentalCar.BusinessLayer.Tests
     public class CarRentedByCustomerServiceTests
     {
         /// <summary>
-        /// Sprawdza czy cena bez rabatu jest poprawnie obliczana
+        /// Sprawdza czy cena bez discountu jest poprawnie obliczana
         /// </summary>
         [TestMethod]
-        public void GetPrice_ValidCarRentedByCustomerWidthoutRabat_PriceDoubleReturned()
+        public void GetPrice_ValidCarRentedByCustomerWidthoutdiscount_PriceDoubleReturned()
         {
             var inputRented = GetRent();
 
@@ -28,10 +28,10 @@ namespace RentalCar.BusinessLayer.Tests
         }
 
         /// <summary>
-        /// Sprawdza czy cena z rabatem jest poprawnie obliczana
+        /// Sprawdza czy cena z discountem jest poprawnie obliczana
         /// </summary>
         [TestMethod]
-        public void GetPrice_ValidCarRentedByCustomerWidthRabat_PriceDoubleReturned()
+        public void GetPrice_ValidCarRentedByCustomerWidthdiscount_PriceDoubleReturned()
         {
             var inputRented = GetRent();
 
@@ -48,7 +48,7 @@ namespace RentalCar.BusinessLayer.Tests
         }
 
         [TestMethod]
-        public void SumRabat_RabatAmountGraterThan100_Return100()
+        public void sumDiscount_discountAmountGraterThan100_Return100()
         {
             var inputRented = GetRent();
 
@@ -57,14 +57,14 @@ namespace RentalCar.BusinessLayer.Tests
                 inputRented.Customer.CarsRentedByCustomersList.Add(inputRented);
             }
 
-            var rabat =
-                CarRentedByCustomerDtoServices.SumRabat(inputRented.Customer, 98);
+            var discount =
+                CarRentedByCustomerDtoServices.sumDiscount(inputRented.Customer, 98);
 
-            Assert.AreEqual(100, rabat);
+            Assert.AreEqual(100, discount);
         }
 
         [TestMethod]
-        public void SumRabat_RabatAmount50_Return50()
+        public void sumDiscount_discountAmount50_Return50()
         {
             var inputRented = GetRent();
 
@@ -73,10 +73,10 @@ namespace RentalCar.BusinessLayer.Tests
                 inputRented.Customer.CarsRentedByCustomersList.Add(inputRented);
             }
 
-            var rabat =
-                CarRentedByCustomerDtoServices.SumRabat(inputRented.Customer, 45);
+            var discount =
+                CarRentedByCustomerDtoServices.sumDiscount(inputRented.Customer, 45);
 
-            Assert.AreEqual(50, rabat);
+            Assert.AreEqual(50, discount);
         }
 
         private CarsRentedByCustomersDto GetRent()
@@ -108,6 +108,13 @@ namespace RentalCar.BusinessLayer.Tests
                 IsReturned = false,
                 RentalDateTime = new DateTime(2017, 06, 01),
             };
+        }
+
+        [TestMethod]
+        public void Test()
+        {
+            
+
         }
     }
 }
